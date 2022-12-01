@@ -1,0 +1,32 @@
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.exe
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.deps.json
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.runtimeconfig.json
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.dll
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.AssemblyInfoInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.AssemblyInfo.cs
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.csproj.CoreCompileInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.dll
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\refint\ExemploExplorando.dll
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.genruntimeconfig.cache
+C:\Users\William\Desktop\William\CSharp\projetos\ExemploExplorando\obj\Debug\net6.0\ref\ExemploExplorando.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.exe
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\ExemploExplorando.pdb
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\refint\ExemploExplorando.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.pdb
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ref\ExemploExplorando.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\ExemploExplorando\obj\Debug\net6.0\ExemploExplorando.csproj.CopyComplete

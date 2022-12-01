@@ -1,0 +1,32 @@
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.exe
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.deps.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.runtimeconfig.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.runtimeconfig.dev.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.AssemblyInfoInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.AssemblyInfo.cs
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.csproj.CoreCompileInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\refint\EncaixaOuNao.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.genruntimeconfig.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios\EncaixaOuNao\obj\Debug\net5.0\ref\EncaixaOuNao.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.exe
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.runtimeconfig.dev.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\bin\Debug\net5.0\EncaixaOuNao.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\refint\EncaixaOuNao.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\EncaixaOuNao.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\EncaixaOuNao\obj\Debug\net5.0\ref\EncaixaOuNao.dll

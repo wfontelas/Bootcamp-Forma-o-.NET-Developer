@@ -1,0 +1,96 @@
+	-----------------------------------------------------------------------------------------------------------------
+	*************************  STACK, HEAP E GARBAGE COLLECTOR NO C# *******************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	Variavel = tipo, nome e valor 
+	
+	1-tipos = int, char, string, decimal, bool, float, double, DateTime...etc.
+	2-Nome = tem que ser único dentro do escopo
+	3-Valor = O que queremos representar para a variavel
+	
+	Stack e Heap = tipos de memoria
+	
+	-Quando declaramos uma variavel ela vai para o Stack(pilha) LIFO, ela vai armazenar o valor na memoria RAM e quanto de espaço estamos ocupando na execução.
+	
+	-Agora quando estamos criando um novo objeto do tipo Pessoa ficara armazenado na Stack o nome do objeto e uma referencia para o Tipo Heap, que armazena o proprio objeto do tipo mais complexo.
+	Na memoria Heap onde o objeto ficará.
+	
+	Então vemos que a memoria Heap e a Stack tem que fazer uma ligação
+	
+	Stack = variaveis do tipo valor e referencia
+	Heap = classe, interfaces, objetos são armazenados na Stack como referencia e o bjeto de verdade na memoria Heap
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	LIMPEZA DE MEMORIA
+	
+	O C# tem uma maneira inteligente de fazer a limpeza.
+	
+	Terminando o metodo a Memoria Stack vai ser limpa de acordo com o padrão LIFO, limpando as varivaies e referencia.
+	
+	Quem vai limpar a Memoria Heap é o Garbage Collector(GC), o Garbage Collector vai limpar todos os dados em uma memoria Heap que estão sem referencia para uma variavel em uso.
+	
+	O Garbage Collector entra em ação automaticamente para fazer a limpeza.
+	
+	OBS: Se não estiver usando uma variavel , apague á para economizar memoria
+	
+	------------------------------------------------------------------------------------------------------------------
+
+	TIPOS DE VALOR E REFERENCIA
+	
+	Tipos de Valor (Value Types) = Stack 
+	Tipos de Referencia(Reference Types) = Stack(referencia) e Heap
+	------------------------------------------------------------------------------------------------------------------
+	
+	ATRIBUIÇÕES DE TIPOS
+	
+	Exemplo:
+		
+	void Metodo() {
+	//Linha 1
+	Pessoa p1 = new Pessoa("Leonardo", "Buta");
+	
+	//Linha 2
+	Pessoa p2 = p1;
+	p2.Nome = "William"; // O resultado será William
+	}
+	------------------------------------------------------------------------------------------------------------------
+	
+	ATRIBUINDO TIPO DE REFERENCIA
+	
+	Pessoa p1 = new Pessoa(nome: "William", sobrenome: "Fontelas");
+	// Pessoa p2 = new Pessoa(nome: "Alice", sobrenome: "Alcantara");
+
+	Pessoa p2 = p1;
+	p2.Nome = "Caroline"; //errado
+
+	Console.WriteLine($"Nome da pessoa p1: {p1.NomeCompleto}");
+	Console.WriteLine($"Nome da pessoa p2: {p2.NomeCompleto}");
+	----------------------------------------------------------------------------------------------------------------
+
+	ATRIBUINDO TIPO DE VALOR
+	
+	int a = 10; //Stack
+
+	int b = a;
+	b = 60;
+
+	Console.WriteLine($"Valor de A: {a}");
+	Console.WriteLine($"Valor de B : {b}");
+	---------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+		
+	 
+	
+	
+		
+	
+	
+	
+	

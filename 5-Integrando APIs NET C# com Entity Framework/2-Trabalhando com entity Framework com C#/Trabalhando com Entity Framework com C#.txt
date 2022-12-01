@@ -1,0 +1,296 @@
+	---------------------------------------------------------------------------------------------------------------
+	*************************** TRABALHANDO COM ENTITY FRAMEWORK COM C# *******************************************
+	---------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO
+	
+	O EF é um framework ORM (Object-Relational Mapping) criado para facilitar a integração com o banco de dados , mapeando tabelas e gerando comandos SQL de forma automática.
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO O CRUD
+	
+	C - Create(Insert)
+	R - Read(Select)
+	U - Update(Update)
+	D - Delete (Delete)
+	
+	Contato
+	+ Id:int													Create Table Contatos ....
+	+ Nome: string			----> Entity Framework Core --->    Insert into Contatos...
+	+ Telefone: string											Update Contatos...
+	+ Ativo: bool												Select * from Contatos
+																Delete from Contatos...		
+
+	
+	-----------------------------------------------------------------------------------------------------------------
+	INSTALANDO PACOTES
+	
+	dotnet tool install --global dotnet-ef    -instalar o Entity Framework ferramenta global
+	
+	Essa é uma ferramenta que vc vai utilizar comandos do Entity Framework diretamente pelo console 
+	
+	dotnet add package Microsoft.EntityFrameworkCore.Design    -para adicionar o pacote no projeto
+	
+	dotnet add package Microsoft.EntityFrameworkCore.SqlServer  - ''    ''     ''  '''   ''  ''  
+	
+	
+	Para verificar se foi tudo instalado corretamente, verifique no seu arquivo .csproj 
+	
+	---------------------------------------------------------------------------------------------------------------
+	CRIANDO A CLASSE ENTIDADE
+	
+	Vamos criar uma nova pasta e nomeala de Entities, e vamos criar uma nova classe chamada Contato
+	
+	public class Contato
+    {
+        public int Id { get; set; }
+        public int Nome { get; set; }
+        public string Telefone { get; set; }
+        public bool Ativo { get; set; }
+    }
+	
+	---------------------------------------------------------------------------------------------------------------
+	CRIANDO CONTEXTO
+	
+	É uma classe que centraliza todas as nossas informações em determinado banco de dados
+	
+	Vamos criar uma nova pasta e nomeala de Context, dentro dela vamos criar uam nova classe chamada de AgendaContext
+	
+	public class AgendaContext : DbContext
+    {
+        public AgendaContext(DbContextOptions<AgendaContext> options) : base(options)
+        {
+            
+        }
+
+        public DbSet<Contato> Contatos { get; set; }
+    }
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CONFIGURANDO A CONEXÃO
+	
+	Vamos agora cadastrar a nossa conexão com o nosso arquivo de configuração e também vamos inicializar o nosso DbContext
+	
+	{}appsettings.Development.json  - usado para testes de desenvolvimentos
+	{}appsettings.json - para produção 
+	
+	Exemplo:
+	
+	Dentro do appsettings.Development.json:
+	
+	"EnviaEmail" : false
+	
+	Dentro do appsettings.json:
+	
+	"EnviaEmail" : true
+	
+	Agora dentro do appsettings.Development.json vamos colocar as seguintes chaves:
+	
+	"ConnectionString": {
+	  "ConexaoPadrao": "(localdb)\\mssqllocaldb;Initial Catalog=Agenda;Integrated Security=True"
+	   }
+	  
+	 
+	 Agora na Classe Program.cs :
+	 
+	 using ModuloAPI.Context;
+	 using Microsof.EntityFrameworkCore;
+	 
+	 Adicionar a alinha abaixo de //Add services to the Container
+	 
+	 builder.Services.AddDbContext<AgendaContext>(options =>
+		options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+	-----------------------------------------------------------------------------------------------------------------
+	ENTENDENDO AS MIGRATIONS
+	
+	Os comandos de criação de tabela  vc precisa fazer isso de maneira manual, através de comandos, toda criação de tabela eu tenho que pedir para o entity criar de maneira antecipada, e essa maneira antecipada , nos chamamos de Migrations(Mapeamento das classes para poder transformar em tabela).
+	
+	dotnet-ef migrations add CriacaoTabelaContato    -Ferramenta que vai atualizar o banco de dados, criar uma migration
+	
+	dotnet-ef database update   -Vamos aplicar a tabela no banco
+	
+	Pronto tabela criado no Banco de Dados
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A CONTROLLER E O ENDPOINT DE CREATE
+	
+	Vamos criar uma nova controller ContatoController dentro da pasta Controllers
+	
+	[ApiController]
+    [Route("[controller]")]
+    public class ContatoController : ControllerBase
+    {
+        private readonly AgendaContext _context;
+        public ContatoController(AgendaContext context)
+        {
+            _context = context;
+        }
+        
+        [HttpPost]
+        public IActionResult Create(Contato contato)
+        {
+            _context.Add(contato);
+            _context.SaveChanges();
+            return Ok(contato);
+        }
+    }
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O ENDPOINT OBTER POR ID
+	
+	Dentro da ContatoController
+	
+	[HttpGet("{id}")]
+    public IActionResult ObterPorId(int id)
+    {
+        var contato = _context.Contatos.Find(id);
+        if(contato == null)
+        return NotFound();
+
+        return Ok(contato);
+    }
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O ENDPOINT DE UPDATE
+	
+	Dentro da ContatoController
+	
+	
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, Contato contato)
+        {
+            var contatoBanco = _context.Contatos.Find(id);
+
+            if(contatoBanco == null)
+                return NotFound();
+
+            contatoBanco.Nome = contato.Nome;
+            contatoBanco.Telefone = contato.Telefone;
+            contatoBanco.Ativo = contato.Ativo;  
+
+            _context.Contatos.Update(contatoBanco);
+            _context.SaveChanges();
+
+            return Ok(contatoBanco);
+        }
+	--------------------------------------------------------------------------------------------------------------
+
+	CRIANDO O ENDPOINT DE DELETE
+	
+	Dentro da ContatoController
+	
+	
+		[HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            var contatoBanco = _context.Contatos.Find(id);
+
+            if(contatoBanco == null)
+                return NotFound();
+
+            _context.Contatos.Remove(contatoBanco);
+            _context.SaveChanges();
+            
+            return NoContent();    
+        }
+		
+	--------------------------------------------------------------------------------------------------------------
+
+	CRIANDO ENDPOINT DE OBTER NOME
+	
+		[HttpGet("ObterPorNome")]
+        public IActionResult ObterPorNome(string nome)
+        {
+            var contatos = _context.Contatos.Where(x => x.Nome.Contains(nome));
+            return Ok(contatos);
+        }
+		
+	--------------------------------------------------------------------------------------------------------------
+
+	ENTENDENDO OS VERBOS HTTP
+
+	http://www.restapitutorial.com/lessons/httpmethods.html
+	
+	Nota: Diferença entre o PUT e o PATCH , é que no PUT vc tem que passar a informação completa enquanto no PATCH  eu possa passar uma informação parcial.
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	RECAPITULANDO A CONSTRUÇÃO DA API
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	ALTERANDO O ENDPOINT CREATE
+	
+	Dentro do Metodo Create , substitua o return por esse abaixo, para ele trazer o endereço no swagger:
+	
+	return CreatedAtAction(nameof(ObterPorId), new { id = contato.Id }, contato);
+	
+	Ex:
+	
+	 Response headers
+	
+	 location: https://localhost:7036/Contato/8
+	 
+	---------------------------------------------------------------------------------------------------------------- 
+	
+	
+	
+	
+
+		
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,291 @@
+	
+	----------------------------------------------------------------------------------------------------------------
+	******************************* NUGET, SERIALIZAR E ATRIBUTOS NO C# *******************************************
+	----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO GERENCIADOR DE PACOTES
+	
+	O que é um pacote?
+	
+	Um pacote é um conjunto de códigos úteis, que possibilita o compartilhamento e reuso do código.
+	
+	Um dos fundamentos da orientação ao objeto é que vc faça reuso dos seus códigos, que vc não duplique
+	então quando estamos falando de pacotes, estou montando um conjunto de códigos que resolvem um determinado problema em especifico.
+	
+	Nuget é o gerenciador de pacotes , que permite desenvolvedores compartilharem códigos e bibliotecas.
+	------------------------------------------------------------------------------------------------------------------
+	EXPLORANDO O NUGET
+	
+	Todo Projeto que vc for trablhar vc vai utlizar alguma coisa do Nuget
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INSTALANDO UM PACOTE PELO VSCODE
+	
+	dotnet add package Newtonsoft.Json    - No terminal do VSCode
+	
+	Após esse procedimento para conferir no VSCode , vc vai no arquivo de extensão .csproj e estará lá dentro da TAG abaixo:
+	
+	<ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INSTALANDO UM PACOTE PELO VISUAL STUDIO
+	
+	Clique com o botão direito na pasta do projeto e selecione a opção "Manage NuGet Packages", selecione a aba Browse e pesquise o pacote , clique em Install
+	
+	Também pode ser pela aba View>Other Windows> Package Manage Console para instalar via  comando, selecione o projeto e coloque o comando para instalar o package.
+	
+	------------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO SERIALIZAÇÃO
+	
+	O processo de serializar consiste em transformar objetos em um fluxo de bytes para seu armazenamento ou transmissão.
+	
+	JSON - JavaScript Notation Object é um formato de texto que segue a sintaxe do Javascript, muito usado para transmitir dados entre aplicações. um arquivo de texto que serializa o objeto.
+	
+	------------------------------------------------------------------------------------------------------------------	SERIALIZAÇÃO NA PRÁTICA
+	
+	Vamos criar um nova classe Venda dentro da pasta Models:
+	
+	public class Venda
+    {
+        public Venda(int id, string produto, decimal preco)
+        {
+            Id = id;
+            Produto = produto;
+            Preco = preco;
+        }
+       public int Id { get; set; }
+       public string Produto { get; set; }
+       public decimal Preco { get; set; } 
+    }
+	
+	na classe Program:
+	
+	using Newtonsoft.Json;
+
+	Venda v1 = new Venda(1, "Material de Escritório", 25.00M);
+
+	string serializado = JsonConvert.SerializeObject(v1, Formatting.Indented);
+
+	Console.WriteLine(serializado);
+	
+	------------------------------------------------------------------------------------------------------------------	
+	ESCREVENDO UM ARQUIVO JSON
+	
+	Para criar um arquivo do tipo json, precisamos usar o metodo File.WriteAllText.
+	
+	
+	
+	using Newtonsoft.Json;
+
+	Venda v1 = new Venda(1, "Material de Escritório", 25.00M);
+
+	string serializado = JsonConvert.SerializeObject(v1, Formatting.Indented);
+
+	File.WriteAllText("Arquivos/vendas.json", serializado);
+
+	Console.WriteLine(serializado);
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	SERIALIZANDO UMA COLEÇÃO
+	
+	Quando existe colchete []  no arquivo .json  criado na pasta Arquivo, é que existe uma coleção, ou seja mais de um objeto.
+	
+	using Newtonsoft.Json;
+
+	List<Venda> listaVendas = new List<Venda>();
+
+	Venda v1 = new Venda(1, "Material de Escritório", 25.00M);
+	Venda v2 = new Venda(2, "licença de Software", 110.00M);
+
+	listaVendas.Add(v1);
+	listaVendas.Add(v2);
+
+	string serializado = JsonConvert.SerializeObject(listaVendas, Formatting.Indented);
+
+	File.WriteAllText("Arquivos/vendas.json", serializado);
+
+	Console.WriteLine(serializado);
+	
+	------------------------------------------------------------------------------------------------------------------	
+	JSON Viewer
+	
+	 site para testar .json   -  codebeautify.org/jsonviewer  
+	 
+	------------------------------------------------------------------------------------------------------------------
+	DATETIME EM JSON
+	
+	//ISO 8601 - Padroniza datas entre sistemas
+	
+	Vamos adicionar uma nova propriedade na classe Venda e inicializa-lá no Construtor:
+	
+	 public Venda(int id, string produto, decimal preco, DateTime dataVenda)
+        {
+            Id = id;
+            Produto = produto;
+            Preco = preco;
+            DataVenda = dataVenda;
+
+        }
+       public int Id { get; set; }
+       public string Produto { get; set; }
+       public decimal Preco { get; set; } 
+       public DateTime DataVenda { get; set; }
+	   
+	   na classe Program:
+	   
+		using Newtonsoft.Json;
+
+		DateTime dataAtual = DateTime.Now;
+
+		List<Venda> listaVendas = new List<Venda>();
+
+		Venda v1 = new Venda(1, "Material de Escritório", 25.00M, dataAtual);
+		Venda v2 = new Venda(2, "licença de Software", 110.00M, dataAtual);
+
+		listaVendas.Add(v1);
+		listaVendas.Add(v2);
+
+		string serializado = JsonConvert.SerializeObject(listaVendas, Formatting.Indented);
+
+		File.WriteAllText("Arquivos/vendas.json", serializado);
+
+		Console.WriteLine(serializado);
+		
+	------------------------------------------------------------------------------------------------------------------
+	DESERIALIZANDO UM OBJETO
+	
+	Vamos imaginar que vc vai receber um arquivo  do tipo .json, e vc precisa importar esse arquivo .json em objeto no seu sistemas
+	
+	Deserializar = pegar um arquivo e transformar em um objeto
+	
+	[
+  {
+    "Id": 1,
+    "Produto": "Material de Escritório",
+    "Preco": 25.00,
+    "DataVenda": "2022-09-16T13:39:59.3548929-03:00"
+  },
+  {
+    "Id": 2,
+    "Produto": "licença de Software",
+    "Preco": 110.00,
+    "DataVenda": "2022-09-16T13:39:59.3548929-03:00"
+  }
+	]
+	
+	Primeiramente vamos estudar o conteudo desse arquivo acima:
+	
+		-Tem colchetes , então é um coleção;
+		-Tem as seguintes propriedades, Id, Produto,Preco e DataVenda;
+		-E o Id é do tipo int, o  produto é do tipo string, o Preco é do tipo decimal e a DataVenda é do tipo DateTime;
+		
+		Então esse objeto vai virar uma classe:
+		
+		public class Venda
+		{
+        public int Id { get; set; }
+        public string Produto { get; set; }
+        public decimal Preco { get; set; }
+        public DateTime DataVenda { get; set; }
+		}
+		
+		e na classe Program:
+		
+		using Newtonsoft.Json;
+
+		string conteudoArquivo = File.ReadAllText("Arquivos/vendas.json");
+
+		List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo);
+
+		foreach (Venda venda in listaVenda)
+		{
+			Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, " +
+							  $"Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}");
+		}
+		
+	------------------------------------------------------------------------------------------------------------------	
+	ATRIBUTOS
+	
+		Vamos ver agora sobre atributos e como vc pode combinar ele para adicionar Metadados		
+		
+		
+		VAmos supor que em um cenário que recebemos um arquivo do tipo .json, em que a propriedade onde traz o Produto esta com a sintaxe Nome_Produto, a nossa propriedade Produto não traria o valor , e não podemos alterar o nome para usar essa sintaxe que usa o underline , pois estariamos fugindo da convenção do C# ,nesse caso vamos utiliza os Atributos JsonProperty ficando desssa forma abaixo :
+		
+		arquivo json:
+		
+		[
+		  {
+			"Id": 1,
+			"Nome_Produto": "Material de Escritório",
+			"Preco": 25.00,
+			"DataVenda": "2022-09-16T13:39:59.3548929-03:00"
+		  },
+		  {
+			"Id": 2,
+			"Nome_Produto": "licença de Software",
+			"Preco": 110.00,
+			"DataVenda": "2022-09-16T13:39:59.3548929-03:00"
+		  }
+		]
+		
+		na classe venda:
+		
+			using Newtonsoft.json;
+		
+			public class Venda
+			{
+				public int Id { get; set; }
+				
+				[JsonProperty("Nome_Produto")]
+				public string Produto { get; set; }
+				
+				public decimal Preco { get; set; }
+				
+				public DateTime DataVenda { get; set; }
+			}
+		
+		--------------------------------------------------------------------------------------------------------------
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

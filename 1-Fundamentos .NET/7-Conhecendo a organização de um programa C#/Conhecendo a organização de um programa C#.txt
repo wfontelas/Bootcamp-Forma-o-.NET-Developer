@@ -1,0 +1,128 @@
+	------------------------------------------------------------------------------------------------------------------
+	******************************CONHECENDO A ORGANIZAÇÃO DE UM PROGRAMA C#******************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	ESTRUTURA DE UM PROGRAMA C#
+	
+	.csproj: Contém informaçãoes referente a um projeto (build,debug,versão).
+	
+	.sln: Contpem informações que carregam um agrupamento de projetos.
+	
+	OBS: ***A pior coisa que pode fazer em programação é duplicar código***
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO NOSSO PROJETO
+	
+		Primeiro passo para refatorar nosso projeto é fazer um backup:
+		
+		clique com o botão direito em um espaço vazio e vá a té a opção "Reveal in File Explorer" ou alt+shift+r, isso
+		abrirá a pasta onde se encontra o projeto ,faça uma copia e nomeie para backup.
+		
+		Agora vamos instalar uma extensão chamada "vscode-solution-explorer". Após instalar a extensão, clique com o 
+		no icone do lado esquerdo e no localizar clique com o botão direito para criar uma nova solução e nomeie-á como
+		ExemploFundamentos.
+		
+		Ou poderiamos também usar um comando para criar a solution:
+		
+			dotnet new sln -n "ExemploFundamentos" -o -c "c:\Projetos\....."
+			
+		Agora clique com o botão direito na Solution , e escolha a opção Add existing project para trazer o projeto que estamos trabalhando. esolha o projeto e clique em Add.
+		
+		Novamente clique com o botão direito e escolha "Add New Project", e escolha o projeto que vc pode adicionar, escolheremos o tipo Class library (biblioteca de classes) , esse novo projeto somente terá nossas classes modelos.
+		Após esolher o tipo Class library, a ide te pedirá a linguagem, no nosso caso C# e vai colocar um nome, aqui vamos chamar de ExemploFundamentos.Common, o que quer dizer que ele será um projeto que será referenciado por diversos outros.
+		
+	-----------------------------------------------------------------------------------------------------------------
+		
+	ORGANIZANDO E REFERENCIANDO PROJETOS
+	
+	
+	Pra começarmos a organizar , vamos criar uma pasta e nomea lá de ExemploFundamentos, selecione os arquivos, e desmarque a solution e as pastas ExemploFundamentos e ExemploFundamentos.Common, e arraste o restante dos arquivos para a pasta criada.
+	
+	Temos um projeto em cada pasta e a solution.
+	
+	Agora vamos mover a nossa pasta Models para a ExemploFundamentos.Common e vamos renomear o Namespace das classes
+	após isso vamos na nossa classe Program.cs e vamos alterar o namespace para using ExemploFundamentos.Common.Models 
+	e vamos instanciar  a classe Pessoa.
+	
+	Caso um projeto não reconheça  o outro dentro da mesma solution, temos que referencia-lo, acessando a solution e referenciando  pasta onde se encontra a classe , ficando dessa forma
+	
+	"ExemploFundamentos", "ExemploFundamentos\ExemploFundamentos.csproj"
+	
+	Porém precisamos fazer o projetos se reconhecerem, apesar de ter o namespace correto, precisa ter uma referencia
+	para isso vamos acessar a nossa extensão solution e no nosso projeto principal vamos clicar com o botão direito e escolher a opção "Add Reference", pronto agora os projetos estão referenciados. Assim podemos utilizar as classes em outros projetos dentro da solution.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO UM PROJETO EM NET5 E NET6
+	
+	Metodo Main esta implicito na versão 6 em frente no .NET
+	
+	Para saber qual versão do .NET que vcs estão usando verifique a no arquivo .csproj na tag TargetFramework
+	
+	VAmos criar um projeto usando o .NET5:
+	
+	-Vamos clicar no espaço vazio com o botão direito e selecionar New Folder e nomea-lá de ExemploFundamentos.NET5.
+	-Localize e aponte a pasta criada acima no terminal do vscode;
+	-Dentro da pasta vamos criar um novo projeto console utilizando o .NET5 , digitando o seguinte comando:
+		dotnet new console --framework net5.0
+		
+	OK, projeto criado na versão 5 do .NET
+	
+	-Agora vamos criar um nova pasta e nomea-lá de ExemploFundamentos.NET6;
+	-vamos criar um novo projeto console na versão .NET6 dentro da pasta acima, digitando os seguintes comandos
+		dotnet new console     -O 6 sendo a ultima versão não precisamos declará-las
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	COMPARANDO O .NET5 E O .NET6
+	
+	A Principal difierença entre eles é o metodo main que não está implicito nas versões do .NET5 para baixo
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO O CAMINHO DO TERMINAL
+	
+	O dotnet run vai sempre porcurar o arquivo com a extensão .csproj
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+		
+		
+		
+		
+	
+	
+		
+	
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+		
+		
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	

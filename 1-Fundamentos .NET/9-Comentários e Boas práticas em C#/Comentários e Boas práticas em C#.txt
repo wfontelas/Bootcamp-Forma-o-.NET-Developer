@@ -1,0 +1,134 @@
+	----------------------------------------------------------------------------------------------------------------
+	******************************* COMENTÁRIOS E BOAS PRÁTICAS EM C# **********************************************
+	----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO AOS COMENTÁRIOS
+	
+	Documentação que fica direto no código
+	
+	// É representado em uma única linha
+	
+	/* comentário */ Permite escrever em várias linhas
+	
+	<summary> Permite documentar classes, métodos, parâmetros e etc
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	COMENTÁRIOS DE LINHA ÚNICA
+	
+	Exemplo:
+	
+	//Instancia da classe Pessoa
+	Pessoa p = new Pessoa();
+	
+	//Atribui o nome e idade para pessoa
+	p.Nome = "William";
+	p.Idade = 39;
+	
+	//Faz a pessoa se apresentar
+	p.Apresentar();
+	
+
+	---------------------------------------------------------------------------------------------------------------
+	
+	COMENTÁRIOS DE MÚLTIPLAS LINHAS
+	
+		/*
+			Atribui onome e idade para pessoa
+			passando o nome William
+			e passando a idade 39 anos
+		*/
+		p.Nome = "William";
+		p.Idade = 39;
+		
+	---------------------------------------------------------------------------------------------------------------
+
+	COMENTANDO NOSSAS CLASSES
+	
+	Precisamos habilitar em Manage>Settings  dai digite editor:format on type e marque a opção
+	
+	Digitando /// em cima da classe
+	
+	///<summary>
+	///Representa uma pessoa física
+	///</summary>
+	public class Pessoa
+	{
+		public string Nome{ get; set;}
+		public int Idade{ get; set;}
+		
+	}
+
+	--------------------------------------------------------------------------------------------------------------
+	
+	COMENTANDO NOS MÉTODOS
+	
+	///<summary>
+	///Faz a pessoa se apresentar, dizendo seu nome e idade
+	///</summary>
+	public void Apresentar()
+    {
+        Console.WriteLine($"Olá, meu nome é {Nome}, e eu tenho {Idade} anos");
+            
+    }
+		
+	COMENTANDO PARÂMETROS
+	
+	public class Calculadora
+    {
+		///<summary>
+		///Realiza uma soma de dois números
+		///</summary>
+		///<param name="x">O Primeiro número inteiro para somar</param>
+		///<param name="y">O Segundo número inteiro para somar</param>
+        public void Somar(int x, int y)
+		{
+			Console.WriteLine($"{x} + {y} = {x + y}");
+		}
+		
+	RETURNS
+	
+		///<summary>
+		///Realiza uma subtração de dois números
+		///</summary>
+		///<param name="x">O Primeiro número inteiro para subtrair</param>
+		///<param name="y">O Segundo número inteiro para subtrair</param>
+		///<returns>Retorna a subtraçãode x e y</returns>
+		public int Subtrair(int x, int y)
+		{
+			Console.WriteLine($"{x} - {y} = {x - y}");
+			return x -y;
+		}	
+
+		
+		
+	---------------------------------------------------------------------------------------------------------------	
+
+					*********Se algo é simples de entender não precisa de comentário**********
+	***Se o seu metodo faz algo generico e vc precisou  colocar um comentário para explicar, considere aletar o nome do seu metodo***
+	
+	https://www.macoratti.net/13/09/net/13/09/n_pcod1.htm
+	
+	https://github.com/leonardo-buta/exemplo-fundamentos-dio   
+	
+	
+	
+	
+	
+					
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+
+		

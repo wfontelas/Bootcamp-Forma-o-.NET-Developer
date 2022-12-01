@@ -1,0 +1,294 @@
+	-----------------------------------------------------------------------------------------------------------
+	************************************ DEPLOY E AZURE FUNCTIONS *********************************************
+	-----------------------------------------------------------------------------------------------------------
+	
+	CRIANDO UM BANCO DE DADOS NO AZURE
+	
+	Cirar umm novo Recurso> SQl Database >Criar
+	
+	Crie o Grupo de Recurso : sistemamvc
+	
+	Nome do banco de Dados : Contatos
+	
+	Servidor>Criar Novo: sistemamvc.database.windows.net
+	
+	Uasr a autenticação do SQL + Login e senha
+	
+	
+	Computação e Armazenamento>Confgurar Banco de Dados , configure a Camada de serviço, o DTU e o tamanho
+	
+	Redundancia local
+	
+	Avançar Rede:
+	
+	Conextividade de Rede>Ponto de extremidade público
+	
+	Regras de Firewall: Permitir que serviços e recursos do Azure acessem este servidor
+	
+	Criar
+	
+	***dotnet add package Azure.Data.Tables***
+	
+	--------------------------------------------------------------------------------------------------------------
+	ENTENDENDO O RECURSO DO BANCO
+		
+	ir para o Recurso
+
+	Visão Geral - ver detalhes do banco
+	
+	Grupo de Receursos:
+	
+	sistemamvc - Servidor SQL Server
+	
+	Contatos - Banco de Dados do servidor acima
+	
+	-------------------------------------------------------------------------------------------------------------
+	
+	ACESSANDO O BANCO DE DADOS
+	
+	Vamos abrir o SSMS do SLQ Server 
+	Nome do Servidor  - sistemamvc.database.windows.net
+	Autenticação - Autenticação do SQL Server
+	
+	Logon + Senha> Conectar
+	
+	Para liberar o Ip para conectar:
+	
+	clique no link do Servidor 
+	
+	acesse Segurança> Rede > Regras de Firewall - Adicionar o endereço IPv4 do cliente(ip) > Salvar
+	
+	-----------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O APP SERVICE
+	
+	Vamos criar o nosso aplicativo , recurso web para fazer o Deploy da aplicação
+	
+	Criar um Recurso> aplicativo Web> Criar
+	
+	Selecione o Grupo de Recurso : sistemamvc
+	
+	Nome do aplicativo : sistemamvcfontelas.azurewebsites.net
+	
+	Publicar> Código
+	
+	Pilha de Runtime - .NET¨(LTS)
+	
+	Sistema Operacional - Linux  (melhor performace)
+	
+	Região - mesma região do banco de dados
+	
+	Plano de Serviço:
+	
+	Dev/Test > 1GB Free > Apply
+	
+	Criar
+	
+	-----------------------------------------------------------------------------------------------------------
+	
+	ALTERANDO A STRING DE CONEXÃO
+	
+	Página inicial> Grupo de Recursos > sistemamvc >sistema mvc(SQL Server) > Contatos > Configurações > Cadeias de conexão, copie o ADO.NET 
+	
+	Server=tcp:sistemamvc.database.windows.net,1433;Initial Catalog=Contatos;Persist Security Info=False;User ID=adminsistemamvc;Password=#Wrpfcaf82cda31;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+	
+	No VSCode , acesse o appsetings.json -e coloque essa Connection String acima
+				acesse o appsetings.Development.json e coloque a Connection String acima - 	para poder aplicar as migrations.	
+				
+		dotnet ef database update
+		
+		
+	--------------------------------------------------------------------------------------------------------------
+
+	REALIZANDO O DEPLOY
+	
+	No VSCode Instalar a extensão AZURE tools
+	
+	Após isso log , clicando em sign-in to Azure
+	
+	Resources> Azure subscription 1> App Services
+	
+	Para Publicar , clique com o botão direito sistemamvcfontelas > Deploy to Web App...
+	-----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO AO AZURE FUNCTIONS
+	
+	Serveless - Vc precisa saber se vai rodar em Linux e Windows 
+	
+	----------------------------------------------------------------------------------------------------------------
+	CRIANDO UM AZURE FUNCTION
+	
+	Vamos criar um nova pasta AzConversaoTemperatura , e abrir no VSCode
+	
+	Clique no icone do Azure Tools > Workspace > o sinal de +> Create Function > Yes
+	
+	selecione a opção C# > .NET6 > e o template HTTP trigger with OpenApi  - já vem configurado o swagger e nomea como ConversaoTemperatura, namespace ConversaoTemperatura
+	, e o nivel de segurança como Anonymous (sem segurança)
+
+	Pronto a estrutura básica do Azure Function foi criada
+	
+	Agora nome a Function(program.cs) para FunctionFahrenheitParaCelsius e o da classe , variavel e constructor também
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONVERTENDO FAHRENHEIT PARA CELSIUS
+	
+	Dentro da FunctionFahrenheitParaCelsius.cs :
+	
+	Vamos fazer algumas alterações:
+		
+		-FunctionName para "ConverterFahrenheitParaCelsius"
+	
+		-OpenApiOperation em tags: new[]{"Conversão"}
+		
+		-OpenApiParameter name:"fahrenheit , In = ParameterLocation.Path, Type = typeof(double), e em Description = " O valor de **Fahrenheit** para conversão em Celsius"
+		
+		-OpenApiResponseWithBody  em Description = "Retorna o valor em Celsius"
+		
+		Dentro do metodo Run:
+		[HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ConverterFahrenheitParaCelsius/{fahrenheit")] HttpRequest req, double fahrenheit)
+		
+		_logger.LogInformation($"Parâmetro recebido: {fahrenheit}", fahrenheit);
+		
+		Vamos apagar esses código de exemplo abaixo:
+		
+		string name = req.Query["name"];
+
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        name = name ?? data?.name;
+		
+		No lugar vamos fazer o calculo de conversão de fahrenheit para celsius:
+		
+		var valorEmCelsius = (fahrenheit - 32) * 5/9;
+		
+		string responseMessage = $"O valor em Fahrenheit {fahrenheit} em Celsius é : {valorEmCelsius};
+		
+		_logger.LogInformation($"Conversão efetuada. Resultado: {valorEmCelsius});
+	
+		***OBS: Para Debugar deve se instalar esse arquivo Azure Functions Core Tool - 4.0.4829(x64)***	
+		
+		-------------------------------------------------------------------------------------------------------------
+		
+	CONVERTENDO CELSIUS PARA FAHRENHEIT 
+	
+	Vamos agora criar mais uma função
+	
+	-Vamos copiar e colar a FunctionFahrenheitParaCelsius.cs e nomealá para FunctionCelsiusParaFahrenheit.cs
+	
+	-Renome a para FunctionCelsiusParaFahrenheit , a classe , a variável e o constructor
+	
+	-OpenApiParameter name:"Celsius , In = ParameterLocation.Path, Type = typeof(double), e em Description = " O valor de **Celsius** para conversão em Fahrenheit"
+	
+	-OpenApiResponseWithBody  em Description = "Retorna o valor em Fahrenheit"
+	
+		Dentro do metodo Run:
+		public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ConverterFahrenheitParaCelsius/{fahrenheit}")] HttpRequest req, double fahrenheit)
+        {
+            _logger.LogInformation($"Parâmetro recebido: {fahrenheit}", fahrenheit);
+
+            var valorEmCelsius = (fahrenheit - 32) * 5 / 9;
+
+            string responseMessage = $"O valor em Fahrenheit {fahrenheit} em Celsius é: {valorEmCelsius}";
+
+            _logger.LogInformation($"Conversão efetuada. Resultado: {valorEmCelsius}");
+
+            return new OkObjectResult(responseMessage);
+        }
+		
+	----------------------------------------------------------------------------------------------------------------
+	CRIANDO O RECURSO PELO PORTAL
+
+	Na página inicial do Azure acesse Menu > Aplicativo de Funções > Criar aplicativo de Funções
+
+		Grupo de Recursos - azfunction
+		
+		Nome do Aplicativo de Funções - azfunctionwfontelas
+		
+		Pilha de Runtime .NET 6
+		
+		Plano:
+		
+		Tipo de plano - 
+		Consumo (sem servidor) Serveless
+		
+		Revisar + Criar
+		
+	-------------------------------------------------------------------------------------------------------------------
+	
+	REALIZANDO O DEPLOY PELO VSCode
+	
+	Vamos publicar a Function na Nuvem
+	
+	Azure >Resource > Function App > Botão direto do mouse > Deploy to Function App...
+	
+	https://azfunctionwfontelas.azurewebsites.net/api/swagger/ui
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	TESTANDO FUNÇÕES PELO PORTAL
+	
+	Menu > Funções > Obter URL da função e também podemos clicar no Código + Teste > teste/run
+	
+	Chaves de aplicativo - podemos proteger as nossas functions com uma chave
+	
+	Configurações - Podemos cadastrar umas chaves para o aplicativo
+	
+	Dominios Personalizados para a Função
+	
+	-----------------------------------------------------------------------------------------------------------------
+	APLICAÇÕES E USOS DO AZURE FUNCTION
+	
+	Azure Function  Pricing > Request 
+	
+	1 Milhão de execuções grátis por mês 
+	
+	400.000 GB de trafego dessas execuções
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+
+		
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

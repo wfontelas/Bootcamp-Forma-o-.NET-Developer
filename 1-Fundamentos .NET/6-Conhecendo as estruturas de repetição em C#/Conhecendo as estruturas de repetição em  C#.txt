@@ -1,0 +1,216 @@
+	------------------------------------------------------------------------------------------------------------------
+	*******************************CONHECENDO AS ESTRUTURAS DE REPETIÇÃO EM C#****************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO A ESTRUTURA DE REPETIÇÃO
+	
+	verificar slide - Laço de Repetição
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO AO FOR
+	
+	int numero = 10;
+	
+	Console.WriteLine($"{numero} x 1 = {numero * 1}");   - agora imagine repetir o código 100x ou alterar 100 linhas de código, dai surge o laço de repetição
+	
+	for - tem a declaração da varivel; a condição de parada; e o incremento
+	
+	int numero = 5
+	
+	for(int contador = 0; contador <= 10; contador++)
+	{
+		Console.WriteLine($"{numero} x {contador} = {numero * contador}");
+	}
+
+	------------------------------------------------------------------------------------------------------------------
+	
+	DEBUGANDO O FOR
+	
+	Debugue o código acima e veja o passo a passo 
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO AO WHILE
+	
+	int numero = 5;
+	int contador = 0;
+	
+	
+	while(contador <= 10)   //- Enquanto a condição for verdadeira , execute o código
+	{
+		Console.WriteLine($"{contador + 1}ºExecução: {numero} x {contador} = {numero * contador}");
+		contador++;
+	}
+	 
+	OBS1: O contador + 1 , logo a pós o cifrão é para a numeração da execução começar em 1
+	OBS2: O while só recebe a condição, por isso precisamo colocar alguma quebra do retorno, se não vira um loop infinito
+	
+	------------------------------------------------------------------------------------------------------------------
+	DEBUGANDO O WHILE
+	
+	Debugue o código acima e veja o passo a passo 
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTERROMPENDO O FLUXO DE EXECUÇÃO
+	
+	Podemos utilizar o break para interromper um fluxo, veja conforme o exemplo
+	
+	while(contador <= 10)   
+	{
+		Console.WriteLine($"{contador + 1}ºExecução: {numero} x {contador} = {numero * contador}");
+		contador++;
+		
+		if(contador == 5)
+		{
+			break;    //quebrará o laço 
+		}
+		
+	}
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO AO DO WHILE
+	
+	O DO WHILE é mais uma extensão do WHILE , porém a sua verificação é executada no final do código, enquanto no bloco DO ele vai executar o seu código indenpedente da condição.
+	
+	int soma = 0, numero = 0;
+	
+	do 
+	{
+		Console.WriteLine("Digite um número (0 para parar)");
+		numero = Convert.ToInt32(Console.ReadLine());
+		
+		soma += numero;      //+= -- soma = soma + numero
+		
+	}while(numero != 0);
+	
+	Console.WriteLine($"O Total da soma dos números digitados é: {soma}");
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	DEBUGANDO O DO WHILE
+	
+	O primeiro passo que temos que fazer , é alterar o tipo de saida do nosso terminal,pois o Console.Readline(), não funciona em um terminal de debbug do visual studio, temos que colocar a nossa saida para um terminal comum , para isso vamos acessar a nossa pasta vscode e abrir o launch.json. e vamos alterar a tag console para integratedTerminal, ficando dessa forma:
+	
+		"console" : "integratedTerminal"   - Ctrl + s p/ salvar o arquivo e No Console clique em Terminal(onde digitaremos o nosso comando.
+		
+	Veja que no debug do DO WHILE ele executa o DO primeiro	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONSTRUINDO UM MENU INTERATIVO
+	
+	//Vc pode construir um menu interativo utilizando WHILE:
+	
+	string opcao;
+	
+	while(true)
+	{
+		Console.WriteLine("Digite a sua opção: ");
+		Console.WriteLine("1 - Cadastrar Cliente ");
+		Console.WriteLine("2 - Buscar Cliente");
+		Console.WriteLine("3 - Apagr Cliente");
+		Console.WriteLine("4 - Encerrar");
+		
+		opcao = Console.ReadLine();
+		
+		switch(opcao)
+		{
+			case "1":
+				Console.WriteLine("Cadastro de Cliente");
+				break;
+				
+			case "2":
+				Console.WriteLine("Busca de clientes");
+				break;
+				
+			case "3":
+				Console.WriteLine("Apagar cliente");
+				break;
+				
+			case "4":
+				Console.WriteLine("Encerrar");
+				Environment.Exit(0);         //Para Encerrar o programa
+				break;
+				
+			default:
+				Console.WriteLine("Opção inválida!");
+				break;
+		}		
+	}
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	//REFATORANDO O MENU
+	
+	string opcao;
+	bool exibirMenu = true;
+	
+	while(true)
+	{
+		Console.WriteLine("Digite a sua opção: ");
+		Console.WriteLine("1 - Cadastrar Cliente ");
+		Console.WriteLine("2 - Buscar Cliente");
+		Console.WriteLine("3 - Apagr Cliente");
+		Console.WriteLine("4 - Encerrar");
+		
+		opcao = Console.ReadLine();
+		
+		switch(opcao)
+		{
+			case "1":
+				Console.WriteLine("Cadastro de Cliente");
+				break;
+				
+			case "2":
+				Console.WriteLine("Busca de clientes");
+				break;
+				
+			case "3":
+				Console.WriteLine("Apagar cliente");
+				break;
+				
+			case "4":
+				Console.WriteLine("Encerrar");
+				exibirMenu = false;		//Inserimos a varivel boleana, pois enquanto ela permacer true irá rodar
+				//Environment.Exit(0);  //Para Encerrar o programa
+				break;
+				
+			default:
+				Console.WriteLine("Opção inválida!")
+				break;
+		}	
+		
+	}
+	Console.WriteLine("	O programa se encerrou");
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+		
+		
+
+	
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,216 @@
+	------------------------------------------------------------------------------------------------------------------
+	***************************** SQL SERVER - CONSTRAINTS, FUNÇÕES E PROCEDURES ************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO CONSTRAINTS - Conjunto de Regras
+	
+	NOT NULL - Não aceita valores nulos
+	UNIQUE - Valor unico em toda a tabela
+	CHECK - Garante uma determinada condição -- Ex: preço > 0
+	DEFAULT - Valor padrão para inserção -- vc pode definir uma valor se não passar nada
+	PRIMARY KEY - É um aocbinação de UNIQUE e NOT NULL
+	FOREIGN KEY - Garante que um registro exista em outra tabela
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONSTRAINT NOT NULL
+	
+	Para verificar as propriedades de uma tabela , inclusive as constrains , selecione o nome da Tabela e aperte as teclas ALT + F1
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONSTRAINT UNIQUE
+	
+	Para não haver valores duplicados na coluna
+	
+	SELECT * FROM Produtos
+	
+	INSERT INTO Produtos (Nome, Preco, Tamanho, Genreo , DataCadsatro)
+	VALUES ("Produto teste', 10, 'G', 'M', GETDATE())
+	
+	ALTER TABLE Produtos
+	ADD UNIQUE(Nome)
+	
+	INSERT INTO Produtos (Nome, Preco, Tamanho, Genreo , DataCadsatro)
+	VALUES ("Produto teste', 10, 'G', 'M', GETDATE())  -- Não vamos conseguir fazer o insert, pois esse nome já existe
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	CONSTRAINT CHECK
+	
+	SELECT * FROM Produtos
+	
+	ALTER TABLE Produtos
+	ADD CONSTRAINT CHK_ColunaGenero CHECK(Genero = 'U' OR Genero = 'M' OR Genero = 'F')
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONSTRAINT DEFAULT
+	
+	Assume um valor padrão para determinada coluna , caso vc não passe um valor
+	
+	ALTER TABLE Produtos
+	ADD DEFAULT GETDATE() FOR DataCadastro
+	
+	INSERT INTO Produtos (Nome, Preco, Tamanho, Genero)
+	VALUES ("Produto teste2', 10, 'G', 'M')
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	APAGANDO UMA CONSTRAINT
+	
+	Selecione  o nome da tabela e aperte o ALT + F1 , verifique o Constraint_type , copie o nome da Constraint para excluir.
+	
+	ALTER TABLE Produtos
+	DROP CONSTRAINT UQ_Produtos__7D8EF3B2D9894E32
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO STORE PROCEDURE
+	
+	Stored Procedure são códigos SQL que você pode salvar diretamente no banco de dados, permitindo assim aproveitar um script comumente usado.
+	
+	Aperte ALT +F1 para ver as informações
+	
+	CREATE PROCEDURE InserirNovoProduto
+	@Nome varchar(255),
+	@Cor varchar(50),
+	@Preco decimal,
+	@Tamanho varchar(5),
+	@Genero char(1)
+	
+	AS 
+	
+	INSERT INTO Produtos (Nome, Cor, Preco, Tamanho, Genero)
+	VALUES (@Nome, @Cor, @Preco, @Tamanho, @Genero)
+	
+	Para verificar que criou uma Procedure , Verifique em Database> ExemploDB> Programmability > Stored Procedures
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CHAMANDO NOSSA STORED PROCEDURE
+	
+	EXEC InserirNovoProduto   
+	@Nome = 'Novo Produto Procedure',
+	@Cor = 'Colorido',
+	@Preco = 50,
+	@Tamanho = 'G'
+	@Genero = 'U'
+	
+	Ou simplemente :
+	
+	EXEC InserirNovoProduto 
+	'Novo Produto',
+	'Colorido',
+	50',
+	'G',
+	'U'
+	------------------------------------------------------------------------------------------------------------------
+	STORED PROCEDURE COM SELECT
+	
+	Todo comando que vc efetua vc pode colocar em uma Procedure , inclusive uma SELECT
+	
+	CREATE PROCEDURE ObterProdutosPorTamanho
+	@TamanhoProduto VARCHAR(5)	
+	AS	
+	SELECT * FROM Produtos WHERE Tamanho = @TamanhoProduto 
+	
+	EXEC ObterProdutosPorTamanho 'G'
+	
+	
+	CREATE PROCEDURE ObterTodosProdutos
+	AS	
+	SELECT * FROM Produtos 
+	
+	
+	EXEC ObterTodosProdutos
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	FUNCTIONS
+	
+	Functions são códigos SQL que você pode salvar diretamente no banco de dados, semelhante a uma procedure, mas com usos específico e limitações, como por exemplo, devem sempre ter um retorno e aceita apenas parâmetros de entrada.
+	
+	
+	CREATE FUNCTION CalcularDesconto(@Preco DECIMAL(13,2), @Porcentagem INT)
+	RETURNS DECIMAL (13, 2)   --Tipo de retorno da Função
+	
+	BEGIN
+		RETURN @Preco - @Preco / 100 * @Porcentagem
+	END
+	
+	
+	SELECT 
+		Nome,
+		Preco,
+		dbo.CalcularDesconto(Preco, 50) PrecoComDesconto    --Chamado a Function 
+	FROM Produtos WHERE Tamanho	= M
+	
+	------------------------------------------------------------//----------------------------------------------------
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

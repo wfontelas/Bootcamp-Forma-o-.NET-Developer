@@ -1,0 +1,215 @@
+	------------------------------------------------------------------------------------------------------------------
+	************************************** ARRAY E LISTA EM C# *****************************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO ARRAY
+	
+	ver o slide
+	------------------------------------------------------------------------------------------------------------------
+	
+	//IMPLEMENTANDO UM ARRAY DE INTEIROS
+	
+	Dentro do projeto ExemplosFundamentos , vamos acessar a classe Program.cs e vamos declarar um Array em 3 posições:
+	
+		int[] arrayInteiros = new int[3];
+		
+		arrayInteiros[0] = 72;
+		arrayInteiros[1] = 64;
+		arrayInteiros[2] = 50;
+		//arrayInteiros[3] = 1;
+		
+		for(int contador = 0; contador < arrayInteiros.Length; contador ++)
+		{
+			
+			Console.WriteLine($"Posição Nº{contador} - {arrayInteiros[contador]}");
+			
+		}
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	ACESSANDO UM INDICE INVÁLIDO
+	
+	Vc pode percorrer o seu Array, até o valor dele -1, caso vc ultrapasse o limite do array ele nos trará uma excessão
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	PERCORRENDO UM ARRAY COM FOREACH
+	
+	Podemos utilzar um outro operador chamado FOREACH, com esse operador podemos também percorrer uma coleção, um array ou uma lista sem vc ter que depender de um contador. Como não temos um contador precisamos gerenciar por fora
+	
+	int[] arrayInteiros = new int[4];
+			
+			arrayInteiros[0] = 72;
+			arrayInteiros[1] = 64;
+			arrayInteiros[2] = 50;
+			arrayInteiros[3] = 1;
+			
+			Console.WriteLine("Percorrendo o array com FOR");
+			
+			for(int contador = 0; contador < arrayInteiros.Length; contador ++)
+			{			
+				Console.WriteLine($"Posição Nº{contador} - {arrayInteiros[contador]}");			
+			}
+			
+			Console.WriteLine("Percorrendo o array com FOREACH");
+			
+			int contadorForeach = 0;        
+			foreach(int valor in arrayInteiros)
+			{
+				Console.WriteLine($"Posição Nº{contadorForeach} - {valor}");
+				contadorForeach++;	
+			}
+
+	 Ou seja no FOR precisamos declarar o contador e o tamanho do array, e com o FOREACH não precisa de um contador que ele vai jogando um valor na varivel a cada interação.
+	 
+	 O FOREACH apenas funciona para coleções, listas e arrays , então o mais simples é que vc use o FOREACH, porém se vc precisar trazer um contador vc utiliza o FOR.
+
+	
+	/*A diferença entre o FOR e o Foreach é que no FOR vc precisa declarar um contador e também precisa 
+	até onde ele vai, no caso acima ela vai até a posição máxima do Array, e com o Foreach eu não preciso
+	de um contador porque ele vai jogando cada valor na minha variavél a cada interação.
+	O FOREACH funciona apenas para coleções ,Listas e Arrays.
+	O FOR se vc precisa de um contador, valor do contador */
+	 
+	-----------------------------------------------------------------------------------------------------------------
+	
+	DEBUGANDO O ARRAY
+
+	Debugue o código para verificar o FOR e o FOREACH
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	REDIMENSIONANDO UM ARRAY
+	
+	Vamos ver agora uma limitação do array, e como nos podemos trabalhar com array ,quando precisamos aumentar o seu tamanho.
+	
+	Vamos utilizar a classe Array e a operação Resize, trazendo o endereço da memoria do array ou seja a referencia, e o novo valor, ficando dessa forma:
+	
+	int[] arrayInteiros = new int[4];
+			
+			arrayInteiros[0] = 72;
+			arrayInteiros[1] = 64;
+			arrayInteiros[2] = 50;
+			arrayInteiros[3] = 1;
+		
+		Array.Resize(ref arrayInteiros, arrayInteiros.Length * 2); 	
+			
+			Console.WriteLine("Percorrendo o array com FOR");
+			
+			for(int contador = 0; contador < arrayInteiros.Length; contador ++)
+			{			
+				Console.WriteLine($"Posição Nº{contador} - {arrayInteiros[contador]}");			
+			}
+	
+
+	OBS:Embora vc pode usar o Resize,o Array nasce e morre com o valor declarado	
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	COPIANDO UM ARRAY PARA O OUTRO
+	
+	Vamos ver agora como eu poderia copiar um elemento de um array antigo para um novo array.
+	
+	int[] arrayInteiros = new int[4];
+		
+		arrayInteiros[0] = 72;
+		arrayInteiros[1] = 64;
+		arrayInteiros[2] = 50;
+		arrayInteiros[3] = 1;
+		
+	int[] arrayInteirosDobrados = new int[arrayInteiros * 2];	
+	Array.Copy(arrayInteiros, arrayInteirosDobrados, arrayInteiros.Lenght);
+		
+		Console.WritLine("Percorrendo o array com FOR");
+		
+		for(int contador = 0; contador < arrayInteiros.Lenght; contador ++)
+		{			
+			Console.WritLine($"Posição Nº{contador} - {arrayInteiros[contador]}");			
+		}
+		
+	
+	OBS: o operador resize copia assim como o metodo copy	
+	------------------------------------------------------------------------------------------------------------------
+
+	TRABALHANDO COM LISTAS
+	
+	Uma lista nada mais é um "array" melhorado, em um array nos temos que passar obrigatóriamente uma capacidade para ele, e se quiser redimensionar temos que usar os operadores Copy e Resize da classe Array.Já em  uma lista não precisamos declarar a sua capacidade máxima , ela consegue ir crescendo conforme vamos adicionando elementos dentro dela.
+	List<string> listaString = new List<string>();
+	
+	listaString.Add("SP");
+	listaString.Add("BA");
+	listaString.Add("MG");
+	listaString.Add("RJ");
+	
+	Console.WriteLine($"Percorrendo a lista com o FOR");
+	for(int contador = 0; contador < listaString.Count; contador ++)
+	{
+		Console.WriteLine($"Posição Nº {contador} - {listaString[contador]}');
+	}
+
+	Console.WriteLine($"Percorrendo a lista com o FOREACH");
+	int contadorForeach = 0;
+	foreach(string item in listaString)
+	{
+		Console.WriteLine($"Posição Nº {contadorForeach} - {item}");
+		contadorForeach++;
+	}
+
+
+	OBS: Sempre que possivel use lista no lugar de array, ainda tem varios metodos dentro da classe
+	
+	
+	
+	//Outro exemplo da classe List
+	
+	List<string> listaString = new List<string>();
+	
+	listaString.Add("SP");
+	listaString.Add("BA");
+	listaString.Add("MG");
+	listaString.Add("RJ");
+	
+	
+	Console.WriteLine($"Itens na minha lista: {listaString.Count} - Capacidade: {listaString.Capacity}");
+	
+	listaString.Add("SC");
+	
+	Console.WriteLine($"Itens na minha lista: {listaString.Count} - Capacidade: {listaString.Capacity}");
+	
+	listaString.Remove("MG");
+	
+	Console.WriteLine($"Itens na minha lista: {listaString.Count} - Capacidade: {listaString.Capacity}");
+	
+	
+    Debugue o código acima e veja que não precisamos redimensionar como o array para dicionar um novo valor em listas.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+		
+		
+	
+	

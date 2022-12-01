@@ -1,0 +1,218 @@
+	---------------------------------------------------------------------------------------------------------------
+	*********************** SQL SERVER - DOMINANDO TABELAS E TIPOS DE DADOS ***************************************
+	----------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO SQL
+	
+	Para consultar e manipular dados vc vai utilizar Linguagem SQL
+	
+	www.guru99.com/sql-commands-dbms-query.html
+	
+	------------------------------------------------------------------------------------------------------------------
+	ENTENDENDO UM DATABASE
+	
+	verificar slides
+	
+	------------------------------------------------------------------------------------------------------------------
+	ACESSANDO O BANCO DE DADOS
+	
+	Abrir o SQL Server Configuration Manager
+	
+	SQL Server Service > Sql Server , o status tem que estar Running
+	
+	Para melhorar a execução clique com botão direito do mouse no Sql server> Aba Service > Start Mode - Manual
+		-  Para gerenciar o banco de dados manualmente.
+		
+	Na tela de login, vc vai colocar:
+
+		Server Type : Database Engine
+		Server name : localhost\sqlExpress
+		Authentication : Windows Authentication
+		
+	Clique em connect
+
+	Clique com o botão direito no DAtabase , e em Database Name , coloque ExemploBD	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO NOSSA TABELAS
+	
+	Primeiramente baixar um repositorio de um banco de dados 
+	
+	github.com/digtalinnovationone/trilha-net-banco-de-dados
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	O COMANDO SELECT
+	
+	select * from Clientes
+	-----------------------------------------------------------------------------------------------------------
+	
+	ORDENANDO OS RESULTADOS
+	
+	ORDER BY - Por padrão é ASC -Ascendente
+	
+	ORDER BY DESC - DECRESCENTE
+	
+	Ex: 
+		SELECT * FROM Clientes
+	
+	   ORDER BY Nome
+	   
+	   ORDER BY Nome, Sobrenome
+	----------------------------------------------------------------------------------------------------------
+
+	SELECIONA COLUNAS
+	
+	SELECT * FROM Clientes
+
+	SELECT  Email FROM Clientes	
+	
+	--------------------------------------------------------------------------------------------------------
+	
+	UTILIZANDO O WHERE
+	
+	SELECT * FROM Clientes
+	WHERE Nome = 'Adam' AND Sobrenome = 'Reynolds'
+	ORDER BY Nome, Sobrenome
+	--------------------------------------------------------------------------------------------------------
+	
+	UTILIZANDO O LIKE
+	
+	SELECT * FROM Clientes
+	WHERE Nome LIKE 'G%
+	ORDER BY Nome, Sobrenome
+	
+	-------------------------------------------------------------------------------------------------------
+	
+	REALIZANDO UM INSERT
+	
+	INSERT INTO Clientes (Nome, Sobrenome, Email, AceitaComunicados, DataCadastro)
+	VALUES ('William', 'Fontelas', 'email@email.com', 1, GETDATE())
+	
+	SELECT * FROM Clientes WHERE Nome = 'William'
+	
+	---------------------------------------------------------------------------------------------------------
+	
+	INSERT OMITINDO COLUNAS
+	
+	INSERT INTO Clientes VALUES ('William', 'Fontelas', 'email@email.com', 1, GETDATE())
+	
+	--Ao contrario do insert com colunas esse insert tem que obdecer as ordens das colunas
+	
+	-------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO O ID
+	
+	Em momento algum do insert , passamos o id , por ser  primary key e a constraint dele é um identity
+	
+	--------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO O APONTAMENTO DA QUERY
+	
+	USE ExemploBD
+	
+	--------------------------------------------------------------------------------------------------------
+	
+	REALIZANDO UPDATE
+	
+	UPDATE Clientes 
+	SET Email = 'emailatualizado@email.com', 
+		AceitaComunicados = 0 
+	WHERE Id = 1003
+	
+	---------------------------------------------------------------------------------------------------------
+	CUIDADOS COM UPDATE(UPDATE sem Where)
+	
+	SELECT * FROM Clientes 
+	
+	BEGIN TRAN  --rodar primeiro, e depois o update
+	ROLLBACK	--rodar após ter feito o update sem where
+	
+	UPDATE Clientes 
+	SET Email = 'emailatualizado@email.com', 
+		AceitaComunicados = 0,
+		Sobrenome = 'Fontelas'	
+		
+	----------------------------------------------------------------------------------------------------------
+
+	DELETANDO UM REGISTRO
+	
+	SELECT * FROM Clientes WHERE Nome = 'William'
+	
+	BEGIN TRAN
+	ROLLBACK
+	
+	DELETE Clientes WHERE Id = 1001
+	
+	----------------------------------------------------------------------------------------------------------
+	
+	ESTUDANDO OS TIPO DE DADOS
+	
+	String:
+	
+	Char - caracter exato ex : sigla do estado SP,MG
+	Varchar - tamanho variavel
+	
+	Numeric:
+	
+	bit - o nosso booleano 0,1 e null
+	int - tamanho de interos variaveis
+	decimal -
+	
+	DateTime:
+	
+	datetime 1 -janeiro 1753 a Dezembro de 9999
+	datetime2 - 	''	0001 a Dezembro de 9999
+	date
+	time
+
+	------------------------------------------------------------------------------------------------------------------
+
+	CRIANDO UMA TABELAS
+
+	CREATE TABLE Produtos(
+		Id int IDENTITY(1,1) PRIMARY KEY NOT NULL,  --tipo IDENTITY , é um tipo que se auto complementa, o bd gerencia 
+		Nome varchar(255) NOT NULL,
+		Cor varchar(50) NULL,
+		Preco decimal(13,2) NOT NULL,
+		Tamanho varchar(5) NULL,
+		Genero char(1) NULL
+	)	
+	
+	SELECT * FROM Produtos
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

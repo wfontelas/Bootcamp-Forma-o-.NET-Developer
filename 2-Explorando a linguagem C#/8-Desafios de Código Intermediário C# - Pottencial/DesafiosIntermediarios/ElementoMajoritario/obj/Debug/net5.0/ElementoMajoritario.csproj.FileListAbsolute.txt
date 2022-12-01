@@ -1,0 +1,16 @@
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.exe
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.deps.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.runtimeconfig.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.runtimeconfig.dev.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.AssemblyInfoInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.AssemblyInfo.cs
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.csproj.CoreCompileInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\refint\ElementoMajoritario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.genruntimeconfig.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\ElementoMajoritario\obj\Debug\net5.0\ref\ElementoMajoritario.dll

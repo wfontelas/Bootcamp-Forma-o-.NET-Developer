@@ -1,0 +1,133 @@
+	--------------------------------------------------------------------------------------------------------------
+	    ******************************* INTRODUÇÃO A NUVEM COM AZURE ****************************************
+	--------------------------------------------------------------------------------------------------------------
+
+	INTRODUÇÃO
+	
+	Aprender os principais conceitos de nuvem, utilizando a plataforma Microsot Azure  e seus principais serviços, como criar uma máquina virtual, publicar suas APIs e utilizar serviços e ferramentas de desenvolvimento fornecidos pela plataforma.
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO A NUVEM
+	
+	vide slide
+	
+	--------------------------------------------------------------------------------------------------------------
+	
+	VANTAGENS DA NUVEM
+	
+	-Custo
+	-Escala Global
+	-Velocidade
+	-Produtividade
+	-Desempenho
+	-Segurança
+	-Confiabilidade
+	
+	
+	--------------------------------------------------------------------------------------------------------------
+	
+	DESVATAGENS DA NUVEM (Possíveis desvantagens)
+	
+	- Indisponibilidade
+	- Segurança e Privacidade -Ex: Senha fácil ADmin 123
+	- Vulnerabilidade - Ex: vc não atualizar uma correção de vulnerabilidade
+	- Controle Limitado  
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	TIPOS DE NUVEM
+	
+	-Nuvem pública - Microsoft Azure , podemos criar os serviços , todo mundo pode utilizar desde que crie uma conta
+	
+	-Nuvem privada - Nuvem restritiva a somente uma empresa, tipo lcsi 
+	
+	-Nuvem hibrída - Você pode utilizar rescursos de uma pública dentro de uma nuvem privada
+	
+	--------------------------------------------------------------------------------------------------------------
+	
+	PROVEDORES DE NUVEM
+	
+	Microsoft Azure, Adobe Creative Cloud, Kamatera, AWS, IBM Cloud, Google Cloud Platform
+	
+	---------------------------------------------------------------------------------------------------------------
+	CRIANDO UMA CONTA NO AZURE
+	
+	ver video
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO UMA MÁQUINA VIRTUAL
+	
+	-Implantar uma máquina virtual 
+	
+	--------------------------------------------------------------------------------------------------------------
+	ACESSANDO UMA MÁQUINA VIRTUAL REMOTAMENTE
+	
+	-ver o video
+	
+	-------------------------------------------------------------------------------------------------------------
+	
+	CONFIGURANDO UM SERVIDOR WEB
+	
+	
+	Configurar um ISS Web Server
+	
+	------------------------------------------------------------------------------------------------------------
+	LIBERANDO A PORTA DO SERVIDOR
+	
+	Copiar e colar o ip da vm em uma aba do navegador - não irá acessar
+	
+	Acessar em configurações no azure > Rede> clique em Adicionar Regra de Entrada:
+	-No campo serviço selecione HTTP e clique em Adicionar
+	
+	Volte para o Nagegador com o ip e atualize , vc acessará a página
+	
+	-----------------------------------------------------------------------------------------------------------
+	
+	EXCLUINDO OS RECURSOS
+	
+	Vamos agora apreender a apagar nossa VM
+	
+	Primeiro em Visão Geral , vamos clicar no botão Parar
+	
+	-Menu , Grupos de Recurso, selecione o rg e clique no botão "excluir o grupo de recursos"
+	-digite o nome do grupo de recurso e clicar em Excluir
+	
+	-----------------------------------------------------------------------------------------------------------
+	ENTENDENDO A ASSINATURA
+	
+	Vc pode verificar a sua assinatura e seu perio grátis do AZURE
+	
+	-Menu>Todos os Serviços> Assinaturas
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,231 @@
+	----------------------------------------------------------------------------------------------------------------
+	******************************* PROPRIEDADES, MÉTODOS E CONSTRUTORES COM C# ************************************
+	----------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO PROPRIEDADES
+	
+			
+		
+		Chave inglesa representa um a propriedade
+		Caixa representa um metodo
+		
+	VALIDANDO NO GET E SET	
+		
+		get - obtendo o valor EX: Console.WriteLine($"Nome: {Nome}, Idade: {Idade}");
+		set- setando ou atribuindo um valor Ex: =
+		
+		Get e Set Vazios , significa que eles estão tentando qualquer valor que passarmos para ele, ele vai aceitar qualquer
+		valor
+		
+		***Para deixar o Nome Obrigatorio: 
+		
+		private string _nome; --Campo onde somente propria classe pode fazer alteração
+		
+		private int _idade;
+		
+        public string Nome 
+        { 
+            get
+            {
+                return _nome.ToUpper();    -ou usando o BODY EXPRESSIONS =  get => _nome.ToUpper();
+            }
+            set
+            {
+                if (value == "")
+                {
+                    throw new ArgumentException("O nome não pode ser vazio");
+                }
+                
+                _nome = value;
+            } 
+        }
+		
+	VALIDANDO A PROPRIEDADE IDADE	
+		
+		*****Que a idade seja maior que 0 : 
+		
+		public int Idade 
+        {
+             get => _idade; 
+             set
+             {
+                 if (value > 0)
+                {
+                    throw new ArgumentException("A idade não pode ser menor que zero");
+                }
+                
+                _idade = value;
+             }
+        }
+		
+	MODIFICADORES DE ACESSO
+		
+			Public = Qualquer um possa acessar a classe, propriedade 
+			
+			Private = O acesso é bme mais restrito, o private é permitido acessar somente na propria classe
+			
+			
+			***A diferença entre uma Propriedade e um Campo é que o campo não terá get e set***	
+			
+			utilizar  o modificador de acesso Private dentro de uma classe , também é conhecido como encapsulamento , onde passaremos a verificação 
+			
+			Esse principio também é conhecido como Encapsulamento , é vc proteger uma variavel(Campo) de alterações externas para que eu possa fazer validações nela , ates de fato atribuir um valor para caso ele seja invalido.
+	-----------------------------------------------------------------------------------------------------------
+			
+	PROPRIEDADES SOMENTE LEITURA
+		
+		
+		public string NomeCompleto => $"{Nome} {Sobrenome}".ToUpper(); //uma propriedade somente de get
+        public int Idade 
+        {
+             get => _idade; 
+             set
+             {
+                 if (value > 0)
+                {
+                    throw new ArgumentException("A idade não pode ser menor que zero");
+                }
+                
+                _idade = value;
+             }
+        }
+
+        public void Apresentar()
+        {
+            Console.WriteLine($"nome:{NomeCompleto}, Idade:{Idade}");
+        }
+		
+	---------------------------------------------------------------------------------------------------------------
+		
+	INTRODUÇÃO MÉTODOS
+		
+		Um metodo é um bloco de códigos que contém uma serie de instruções
+		
+		É um ação que a classe vai fazer
+	-----------------------------------------------------------------------------------------------------------------
+		
+	IMPLEMENTANDO A CLASSE CURSO		
+		
+		TIPOS DE RETORNO			
+		
+		void - quando não precisamo de retorno
+		
+		int - retorna numeros inteiros - Todo metodo que tem o retorno tem que ter a palavra chave "return"
+		
+		*****Por via de regra um metodo é diferente do tipo "void" ele tem que ter um "return"***
+		
+		Exemplo:
+		
+		public void AdicionarAluno(Pessoa aluno)
+        {
+            Alunos.Add(aluno);
+        }
+
+        public int ObterQuantidadeDeAlunosMatriculados()
+        {
+           int quantidade = Alunos.Count;
+           return quantidade;
+        }
+		
+	-----------------------------------------------------------------------------------------------------------------
+		
+	IMPLEMENTANDO O METODO REMOVER
+		
+		 public bool RemoverAluno(Pessoa aluno)
+        {
+            return Alunos.Remove(aluno);            
+        }
+	----------------------------------------------------------------------------------------------------------------
+	
+	IMPLEMENTANDO O METODO LISTAR ALUNOS
+
+		   public void ListarAlunos()
+        {
+            Console.WriteLine($"Alunos do curso de: {Nome}");
+            foreach (Pessoa aluno in Alunos)
+            {
+                Console.WriteLine(aluno.NomeCompleto);
+            }
+        }
+		
+		E na classe Programs :
+		
+		using ExemploExplorando.Models;
+
+		Pessoa p1 = new Pessoa();
+		p1.Nome = "William";
+		p1.Sobrenome = "Fontelas";
+
+		Pessoa p2 = new Pessoa();
+		p2.Nome = "Caroline";
+		p2.Sobrenome = "Fontelas";
+
+		Curso cursoDeIngles = new Curso();
+		cursoDeIngles.Nome = "Ingles";
+		cursoDeIngles.Alunos = new List<Pessoa>();
+
+		cursoDeIngles.AdicionarAluno(p1);
+		cursoDeIngles.AdicionarAluno(p2);
+		cursoDeIngles.ListarAlunos()
+		
+	------------------------------------------------------------------------------------------------------------
+		
+	TRABALHANDO COM CONSTRUTORES	
+		
+		-O construtor tem como finalidade atribuir valores para um objeto no momento da sua criação;
+		-Um construtor por convenção ele fica logo abaixo do inicio da classe(dentro da mesma);
+		-Todo Construtor tem o mesmo nome da Classe;
+		-O construtor não tem um tipo de retorno (ex: void. int, string ....);
+		-O construtor pode ser vazio ou receber paramentros, porém se passar os paramentros, obrigatoriamente toda classe que instaciar a mesma classe tem que passar os parametros inseridos ou criar um mais um construtor sem parametros.
+		-Não existe limite máximo de construtores
+		
+		 public Pessoa()
+        {
+
+        }
+        public Pessoa(string nome, string Sobrenome)
+        {
+            
+        }
+		
+		E na classe Programs:
+		
+		using ExemploExplorando.Models;
+
+		Pessoa p1 = new Pessoa("William", "Fontelas");
+		Pessoa p2 = new Pessoa("caroline", "Fontelas");
+
+		Curso cursoDeIngles = new Curso();
+		cursoDeIngles.Nome = "Ingles";
+		cursoDeIngles.Alunos = new List<Pessoa>();
+
+		cursoDeIngles.AdicionarAluno(p1);
+		cursoDeIngles.AdicionarAluno(p2);
+		cursoDeIngles.ListarAlunos();
+	---------------------------------------------------------------------------------------------------------------	
+	
+	IMPLEMENTANDO CONSTRUTOR
+
+		  public Pessoa(string nome, string sobrenome)
+        {
+            Nome = nome;     
+            Sobrenome = sobrenome;
+        }
+		 Onde "Nome" é a propriedade e nome o parametro, ou seja a propriedade vai receber o parametro do construtor
+		 
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		
+		

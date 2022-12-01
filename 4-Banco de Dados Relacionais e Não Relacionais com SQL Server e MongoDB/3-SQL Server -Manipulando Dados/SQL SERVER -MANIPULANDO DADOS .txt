@@ -1,0 +1,198 @@
+	------------------------------------------------------------------------------------------------------------------
+	******************************** SQL SERVER -MANIPULANDO DADOS ***********************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO
+	
+	Built-in functions - contar , somar , média
+	
+	Abrir o script da tabela Produtos (Github) e rodar o script
+	
+	
+	*** OBS: Edit > IntelliSense > Refresh Local Cache(Ctrl+Shift+r) atualizar para reconher a tabela ***
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	USANDO O COUNT
+	
+	SELECT COUNT(*) QuantidadeProdutos FROM Produtos
+	
+	SELECT COUNT(*) QuantidadeProdutosTamanhoM FROM Produtos WHERE Tamanho = 'M'
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	USANDO O SUM
+	
+	SELECT SUM(Preco) PrecoTotal FROM Produtos
+	
+	SELECT SUM(Preco) PrecoTotalProdutosTamanhoM FROM Produtos WHERE Tamanho = 'M'
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	USANDO O MAX, MIN, AVG
+	
+	SELECT MAX(Preco) ProdutoMaisCaro FROM Produtos 
+	
+	SELECT MAX(Preco) ProdutoMaisCaroTamanhoM  FROM Produtos WHERE Tamanho = 'M'
+	
+	SELECT MIN(Preco) ProdutoMaisBarato FROM Produtos 
+	
+	SELECT MIN(Preco) ProdutoMaisBaratoTamanhoM  FROM Produtos WHERE Tamanho = 'M'
+	
+	SELECT AVG(Preco) FROM Produtos
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONCATENANDO COLUNAS
+	
+	SELECT Nome + ',Cor: ' + Cor + ' - ' + Genero NomeProduto FROM Produtos
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	UPPER E LOWER 
+	
+	SELECT Nome + ',Cor: ' + Cor + ' - ' + Genero NomeProdutocOMPLETO
+		   UPPER(Nome) Nome,
+		   LOWER(Cor) Cor	
+	FROM Produtos
+	
+	------------------------------------------------------------------------------------------------------------------
+	ADICIONANDO UMA NOVA COLUNAS
+	
+	Pelo SSMS - Tables>dbo.Produtos , botão direito , escrever o nome DataCadastro e o tipo da coluna datetime2 , e para deletar , botão direito e deletar
+	
+	Pelo SQL:
+	
+	ALTER TABLE Produtos     
+	ADD DataCadastro DATETIME2   --Criar coluna
+	
+	UPDATE Produtos SET DataCadastro = GETDATE() --GETDATE para pegar a data atual
+	
+	ALTER TABLE Produtos     
+	DROP COLUMN DataCadastro  --Apagar coluna 
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	FORMATANDO UMA DATA
+	
+	SELECT Nome + ',Cor: ' + Cor + ' - ' + Genero NomeProdutocOMPLETO
+		   UPPER(Nome) Nome,
+		   LOWER(Cor) Cor
+		   FORMAT(DataCadastro, 'dd-MM-yyyy') Data	
+	FROM Produtos
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO O GROUP BY
+	
+	SELECT Tamanho,
+		   COUNT(*) Quantidade
+	FROM Produtos
+	WHERE Tamanho <> ''
+	GROUP BY Tamanho
+	ORDER BY Quantidade DESC
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	PRIMARY KEY E FOREIGN KEY
+	
+	PRIMARY KEY = Chave unica que identifica cada registro na tabela
+	
+	FOREIGN KEY = Chave que identifica um registro existente em outra tabela
+	
+	------------------------------------------------------------------------------------------------------------------
+	CRIANDO A TABELA DE ENDEREÇOS COM FOREIGN KEY
+	
+	Clicar com o botão direito em tabela>design e verifique se esta com o icone de chave PK
+	caso não esteja clique com o botão direito em cima de Id e selecione a opção "Set Primary Key" Ctrl + s para Salvar
+	
+	CREATE TABLE Enderecos(
+		Id int PRIMARY KEY IDENTITY(1,1) NOT NULL, 
+		IdCliente int NULL,
+		Rua varchar(255) NULL,
+		Bairro varchar(255) NULL,
+		Cidade varchar(255) NULL,
+		Estado char(2) NULL,
+		
+		CONSTRAINT FK_Enderecos_Clientes FOREIGN KEY(IdCliente)
+		REFERENCES Clientes(Id)
+	)
+	
+	INSERT INTO Enderecos VALUES (4, 'Rua Teste', 'Bairro teste', 'Cidade teste', 'SP')
+	
+	
+	select * from Clientes where id = 4 -PRIMARY KEY
+	select * from Enderecos where IdCliente = 4   - FOREIGN KEY
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	REALIZANDO UM JOIN
+	
+	SELECT * FROM Clientes
+	INNER JOIN Enderecos ON Clientes.Id = Enderecos.IdCliente
+	WHERE Clientes.Id = 4
+	
+	
+	
+	
+	
+	SELECT
+		C.Nome,
+		C.Sobrenome,
+		C.Email,
+		E.Rua,
+		E.Bairro,
+		E.Cidade,
+		E.Estado 
+	FROM Clientes C
+	INNER JOIN Enderecos E ON C.Id = E.IdCliente
+	WHERE Clientes.Id = 4
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

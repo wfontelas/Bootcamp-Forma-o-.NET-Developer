@@ -1,0 +1,317 @@
+	------------------------------------------------------------------------------------------------------------
+	************************************* TESTES UNITÁRIOS COM C# *********************************************
+	------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO
+	
+	Aprender os principais conceitos de testes unitários, seu objetivo e sua importânicia em qualquer projeto, independente de seu tamanho
+	
+	-----------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO TESTES DE SOFTWARE
+	
+	tipos de testes :
+	
+	unitários, integração, regressivo, segurança, etc....
+	
+	Desenvolvedor , QA , Cliente
+	
+	Testes Unitários - ligado ao Desenvolvedor
+	 
+	Validar o que foi construido
+	
+	------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO TESTES UNITÁRIOS
+	
+	São testes realizados diretamente no código fonte, buscando testar a menor unidade de código possível, através de cenários que podem ocorrer no sistema.
+	
+	São códigos para validar o código
+	
+	Escrever um cénario para testar o código.
+	
+	--------------------------------------------------------------------------------------------------------------
+	VANTAGENS DOS TESTES
+	
+	Qualidade - Conceito inegocíavel
+	
+	Garante que alteração não tenha impactos no sistema.
+	
+	Menos bugs
+	
+	Maior confiança de que suas Classes e métodos funcionem
+
+	Previnir Problemas futuros
+	
+	---------------------------------------------------------------------------------------------------------------
+	FRAMEWORKS DE TESTES
+	
+	-MSTest
+	-NUnit
+	-xUnit
+	
+	Solution - Calculadora.csproj  - tipo Console
+			 - CalculadoraTestes.csproj - tipo xUnit
+			 
+	 ***Vamos utilizar o xUnit*** 
+	---------------------------------------------------------------------------------------------------------------
+	CRIANDO NOSSO PROJETO
+	
+	Crie uma pasta ModuloTestesDIO >Calculadora >CalculadoraTestes 
+	
+	dentro de Calculadora > dotnet new console
+	
+	dentro de CalculadoraTestes >dotnet new test
+	
+	Vamos agrupar esses projetos em um Solution
+	
+	Solution Explorer> Create new Solution , nomeia a de MosuloTestesDio
+
+	ou dotnet new sln -n "ModulosTestesDIO"
+	
+	Botão direito > adicionar projeto existente e selecione os projetos
+	
+	Agora vamos adicionar uma referencia no CalculadoraTestes para reconhecer o Calculadora
+	
+	Botão direto em CalculadoraTestes e add refrerence
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	IMPLEMENTANDO A CLASSE CALCULADORA
+	
+	Dentro da Pasta Calculador vamos cirar uma nova pasta Services e uma nova classe CalculadoraImp.cs e o metodo
+	Somar:
+	
+		public class CalculadoraImp
+		{
+			public int Somar(int num1, int num2)
+			{
+				return num1 + num2;
+			}
+		}
+		
+	Na classe  Program.cs:
+
+		using Calculadora.Services;
+
+		CalculadoraImp c = new CalculadoraImp();
+
+		int num1 = 5;
+		int num2 = 10;
+
+		Console.WriteLine($"{num1} + {num2} = {c.Somar(num1, num2)}");	
+		
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A CLASSE TESTES
+
+	Renomeie a classe UnitTest1.cs para CalculadoraTests.cs
+	
+		using Calculadora.Services;
+
+		namespace CalculadoraTestes;
+
+		public class CalculadoraTests
+		{
+			private CalculadoraImp _calc;
+			public CalculadoraTests()
+			{
+				_calc = new CalculadoraImp();
+			}
+
+			[Fact]
+			public void DeveSomar5Com10ERetornar15()
+			{
+				//Arrange
+				//Act
+				//Assert
+			}
+		}
+	
+	Arrange - montar o seu cenario 
+	Act - somar 
+	assert - validar se o que fizemos retornou o esperado
+	
+	--------------------------------------------------------------------------------------------------------------------
+	IMPLEMENTANDO O TESTE UNITÁRIOS
+	
+	using Calculadora.Services;
+
+	namespace CalculadoraTestes;
+
+	public class CalculadoraTests
+	{
+		private CalculadoraImp _calc;
+		public CalculadoraTests()
+		{
+			_calc = new CalculadoraImp();
+		}
+
+		[Fact]
+		public void DeveSomar5Com10ERetornar15()
+		{
+			//Arrange
+			int num1 = 5;
+			int num2 = 10;
+
+			//Act
+			int resultado = _calc.Somar(num1, num2);
+
+			//Assert
+			Assert.Equal(15, resultado);
+		}
+	}
+	
+	dotnet test  - para executar os testes
+	
+	-------------------------------------------------------------------------------------------------------------
+	VALIDANDO O TESTE
+	
+	Debugar o teste no projeto
+	
+	--------------------------------------------------------------------------------------------------------------
+	IMPLEMENTADNO VALIDAÇÕES DE STRING
+	
+	Em Calculadora > Services vamos criar uma nova classe ValidacoesString:
+	
+		public class ValidacoesString
+		{
+			public int ContarCaracteres(string texto)
+			{
+				int num = texto.Length;
+				return num;
+			}
+		}
+	Em CalculadoraTestes criar uma nova classe ValidacoesStringTest.cs:
+	
+		using Calculadora.Services;
+
+		namespace CalculadoraTestes
+		{
+			public class ValidacoesStringTest
+			{
+				private ValidacoesString _validacoes;
+				public ValidacoesStringTest()
+				{
+					_validacoes = new ValidacoesString();
+				}
+				[Fact]
+				public void DeveContar3caracteresEmOlaERetornar3()
+				{
+					//Arrange
+					string texto = "Ola";
+
+					//Act
+					int resultado = _validacoes.ContarCaracteres(texto);
+
+					//Assert
+					Assert.Equal(3, resultado);
+				}   
+			}
+		}
+		
+	--------------------------------------------------------------------------------------------------------
+	VERIFICANDO SE O NUMERO É PAR
+
+	Dentro da Classe CalculadoraImp , vamos criar o metodo
+
+		public bool EhPar(int num)
+        {
+            return num % 2 == 0;
+        }
+	
+	Dentro da classe CalculadoraTestes:
+
+		[Fact]
+		public void DeveVerificarse4EhParERetornarVerdadeiro()
+		{
+			//Arrange
+			int numero = 4;
+
+			//Act
+			bool resultado = _calc.EhPar(numero);
+
+			//Assert
+			Assert.True(resultado); //poderia ser Assert.False(resultado);
+		}
+	-------------------------------------------------------------------------------------------------------
+	UTILIZANDO O THEORY
+	
+	Utilizando o metodo EhPar , gostaria de verificar uma sequencia de numeros, tipo:
+	2,4,6,8,10 
+	
+	Para isso temos o Theory:
+	
+		[Theory]
+		[InlineData(2)]
+		[InlineData(4)]
+		[InlineData(6)]
+		[InlineData(8)]
+		[InlineData(10)]
+		public void DeveVerificarSeOsNumerosSaoParesERetornarVerdadeiro(int numero)
+		{
+			//Act
+			bool resultado = _calc.EhPar(numero);
+
+			//Assert
+			Assert.True(resultado);
+		}
+	-----------------------------------------------------------------------------------------------------	
+	REFATORANDO O MÉTODO DE TESTE
+	
+	//Refatorando o metodo acima
+    [Theory]
+    [InlineData(new int[] {2, 4, 6})]
+    [InlineData(new int[] {8, 10})]
+    public void DeveVerificarSeOsNumerosSaoParesERetornarVerdadeiroRef(int[] numeros)
+    {
+        //Act //Assert
+        Assert.All(numeros, num => Assert.True(_calc.EhPar(num)));
+    }
+	---------------------------------------------------------------------------------------------------
+	
+	Parabéns por chegar até aqui! Keep rocking 🚀
+ 
+
+	Separamos aqui alguns materiais complementares como artigos, apostilas, apresentações, entre outros. Esses materiais serão úteis para você se aprofundar ainda mais nos principais temas deste Módulo, listados a seguir.
+
+	 
+
+	Links úteis
+	Criando seu primeiro teste unitário: https://docs.microsoft.com/en-us/visualstudio/test/walkthrough-creating-and-running-unit-tests-for-managed-code?view=vs-2022
+
+Boas práticas na hora de criar testes unitários: https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	 
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	

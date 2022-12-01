@@ -1,0 +1,195 @@
+	------------------------------------------------------------------------------------------------------------------
+		******************************** TIPOS ESPECIAIS NO C# *****************************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO E TIPOS DE VALORES NULOS
+	
+	Nullable
+	
+	bool = true, false;
+	bool? = true, false, null;
+	
+	------------------------------------------------------------------------------------------------------------------
+	TIPOS NULOS NA PRÁTICA
+	
+	Vamos imaginar o seguinte cenário, eu tenho uma lista de usuarios e eu quero saber se estes usuarios tem as seguintes opções:
+	
+	-se ele deseja receber e-mail;
+	-se ele Não deseja receber e-mail;
+	-ou se ele esta nulo , no sentido de ele não me respondeu ou não deseja receber e-mail;
+	
+	Vamos representar isso no program:
+	
+	Quando estamos passando um valor nulo em uma variável , temos duas propriedades , a .HasValue e .Value, no código abaixo ele vai verificar se tem o valor e se o valor é verdadeiro.
+	
+	
+	bool? desejoReceberEmail = null;
+
+	if(desejoReceberEmail.HasValue && desejoReceberEmail.Value)
+	{
+		Console.WriteLine("O usuário optou por receber e-mail");
+	}
+	else
+	{
+		Console.WriteLine("O usuário não respondeu ou optou por não receber e-mail");
+	}
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	TIPOS NULOS EM PROPRIEDADES
+	
+	Em um cenario que o recebemos um arquivo do tipo json e o mesmo vem com uma propriedade com valor null:
+	
+	Dentro no arquivo vendas.json vamos acrescentar o valor "Desconto": null no primeiro objeto e no segundo "Desconto" : 10
+	
+	Dentro da classe Venda vamos criar uma propiedade Desconto
+	
+	public decimal? Desconto { get; set;}
+	
+	using Newtonsoft.Json;
+
+	string conteudoArquivo = File.ReadAllText("Arquivos/vendas.json");
+
+	List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo);
+
+	foreach (Venda venda in listaVenda)
+	{
+		Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, " +
+						  $"Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}" +
+						  $"Desconto: {(venda.Desconto.HasValue ? $"Desconto de: {venda.Desconto}" : "" )}");
+	}
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	TIPOS ANÔNIMOS (ou variavel Global)
+	
+	Tipos anônimos fornecem um modo conveniente de encapsular propriedades somente leitura
+	
+	var tipoAnonimo = new { Nome = "William", Sobrenome = "Fontelas", Altura = 1.87}; //Somente get; (leitura)
+
+	Console.WriteLine("Nome: " + tipoAnonimo.Nome);
+	Console.WriteLine("Sobrenome: " + tipoAnonimo.Sobrenome);
+	Console.WriteLine("Altura: " + tipoAnonimo.Altura);
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	TIPOS ANÔNIMOS EM COLEÇÃO
+	
+	vamos ler o arquivo tipo json e deserializalo em uma lista:
+	
+	Vamos imaginar a seguinte situação em que eu queria somente pegar as seguintes propriedades do arquivo json: Nome e Preço e construir ele em um objeto do tipo anonimo:
+	
+	string conteudoArquivo = File.ReadAllText("Arquivos/vendas.json");
+
+	List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArquivo);
+
+	var listaAnonimo = listaVenda.Select(x => new { x.Produto, x.Preco});
+
+	foreach(var venda in listaAnonimo)
+	{
+		Console.WriteLine($"Produto: {venda.Produto}, Preço: {venda.Preco}");
+	}
+	
+	--------------------------------------------------------------------------------------------------------------------------
+	
+	TIPO DINÂMICO
+	
+	dynamic variavelDinamica = 4;
+
+	Console.WriteLine($"Tipo da Variável: {variavelDinamica.Getype()}, Valor: {variavelDinamica}");
+
+	variavelDinamica = "Texto";
+	Console.WriteLine($"Tipo da Variável: {variavelDinamica.Getype()}, Valor: {variavelDinamica}");
+
+	variavelDinamica = true;
+	Console.WriteLine($"Tipo da Variável: {variavelDinamica.Getype()}, Valor: {variavelDinamica}");
+	
+	--------------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO UMA CLASSE GENÉRICA
+	
+	Vamos criar uma classe dentro da pasta Models, chamada de MeuArray
+	
+	public class MeuArray<T>
+    {
+        private static int capacidade = 10;
+        private int contador = 0;
+        private T[] array = new T[capacidade];
+
+        public void AdicionarElementoArray(T elemento)
+        {
+            if(contador + 1 < 11)
+            {
+                array[contador] = elemento;
+            }
+            contador++;
+        }
+
+        public T this[int index]
+        {
+            get{ return array[index];}
+            set{ array[index] = value;}
+        }
+		
+	----------------------------------------------------------------------------------------------------------------------	
+    TESTANDO NOSSA CLASSE GENÉRICA
+
+	MeuArray<int> arrayInteiro = new MeuArray<int>(); // classe generica tipando como inteiro
+
+	arrayInteiro.AdicionarElementoArray(30);
+
+	Console.WriteLine(arrayInteiro);
+
+
+	MeuArray<string> arrayString = new MeuArray<string>(); //classe generica tipando como string
+
+	arrayString.AdicionarElementoArray("Teste");
+
+	Console.WriteLine(arrayString);	
+	
+	------------------------------------------------------------------------------------------------------------------------
+
+	METODOS DE EXTENSÃO
+	
+	É extender um determinado tipo com algum comportamento e esse determinado tipo vai ter esse comportamento que vc colocou, ou seja vamos supor que vc queira fazer um tratamento com o tipo inteiro, quando vc adiciona um metodo com o tipo inteiro , automaticamente todos os seus tipos inteiros vão ter esse metodo, então é como se fosse uma capacidade a mais que o seu metodo teria, que o tipo poderia realizar.
+	
+	Qual a diferença de um metodo comum para um metodo extensions?
+	Quando colocamos o "this int", significa que estou usando o proprio valor no qual estou chamando, ou seja o meu numero aqui é inteiro, então quando eu instancio numero.EhPar();, o numero passado na variavel numero , será considerado dentro do parametro do metodo "this int numero" onde usamos a logica booleana para ver se o numero é par ou não.
+	
+	
+	
+
+	Vamos criar uma nova classe dentro da pasta Models e chama-lá de IntExtension
+	
+	  public static class IntExtensions
+    {
+        public static bool EhPar(this int numero)
+        {
+            return numero % 2 == 0;
+        }
+    }
+	
+	E na classe Program :
+	
+	int numero = 15;
+	bool par = false;
+
+	//IF Ternário
+	par = numero.EhPar();
+
+	string mensagem = "O Número " + numero + " " + "é " +(par ? "par " : "ímpar");
+	Console.WriteLine(mensagem);
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

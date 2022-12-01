@@ -1,0 +1,280 @@
+	-------------------------------------------------------------------------------------------------------------------
+	************************************SINTAXE E TIPOS DE DADOS EM C#*********************************************
+	-------------------------------------------------------------------------------------------------------------------
+											1-SINTAXE E IDENTAÇÃO
+	
+	ENTENDENDO A ESTRUTURA DE PROJETOS
+	
+	extensão cs - arquivos representam as classes
+	extensão csproj - arquivos que representam a estrutura de um projeto
+	
+	Obj - Pasta referente ao Debug do sistema 
+	bin - Pasta referente ao arquivos binários , onde é compilado e gerado o binario
+	
+	Obs: Pastas geradas toda a vez que o projeto for compilado, caso tenham sido apagadas
+	
+	solution - agrupámentos de projeto
+	-------------------------------------------------------------------------------------------------------------------
+	
+	O CONCEITO DE CLASSE
+	
+	A classe é um molde , a construção do objeto
+	
+	Abstração é transformar um objeto da vida real e transformar em um objeto na programação, Abstraindo somente os 
+	atributos que sejam nescessário
+	
+	O metodo é uma ação que o bjeto da classe possa realizar,o metodo é acompanhado de ()
+	
+	-------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO NOSSA CLASSE NO CÓDIGO
+	
+	
+	Todo nome de classe tem que começar com a letra Maiuscula
+	
+	public class Pessoa
+    {
+        public string Nome { get; set; }
+        public int Idade { get; set; }
+
+        public void Apresentar()
+        {
+            Console.WriteLine($"Olá, meu nome é {Nome}, e eu tenho {Idade} anos");
+        }
+
+
+    }
+	------------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO A ESTRUTURA DO CÓDIGO
+	
+	class Pessoa = Classe Pessoa, sendo o começo e o fim da classe , representando o começo e o fim da chave
+	
+	Dentro da classe temos os atributos da Pessoa , no caso as propriedades Nome e Idade e em cada propriedade
+	temos o get e set , sendo o get pra pegar o valor e o set para atribuir um valor
+	
+	Temos o metodo Apresentar , sendo a ação dele trazer as propriedades Nome e Idade, trazedno o () para indicar 
+	que ele é uma ação, uma função
+	
+	Console = classe 
+	WriteLine = Metodo da classe Console
+	
+	Pessoa.Apresentar = para trazer a classe pessoa e o metodo Apresentar
+	
+	Namespace = uma organização de classes , um dominio
+	
+	Palavaras reservadas = são palavras que vc não pode utilizar para declarar variaveis , constantes , criar classes
+	Por exemplo: public, int, string, class, void...e etc. Para o vscode pertimir temos que colocar o @ na frente da 
+	palavra reservada, mas não é recomendável.
+	-------------------------------------------------------------------------------------------------------------------
+	
+	USANDO NAMESPACES
+	
+	Lembrando que uma classe é uma representação de um obejto da vida real, porém por si só ela não faz nada , para fazer uso dessa classe ,temos que declarar o namespace onde iremos instaciar e para isso precisamos saber o endereço dessa classe, ficando assim conforme o exemplo da classe Pessoa:
+	
+	using ExemploFundamentos.Models;
+
+	Pessoa p1 = new Pessoa();
+	
+	Podemos ter varias copias da nossa classe desde que o namespace seja diferente
+	-------------------------------------------------------------------------------------------------------------------
+	
+	USANDO A CLASSE Pessoa
+	
+	
+	Obs: usando uma analogia a construção da casa , antes a casa estava na planta , agora construimos a casa 
+	
+		Pessoa pessoa1 = new Pessoa  -estamos instanciando a classe e armazeando-á uma variável (pessoa1).
+
+		pessoa1.Nome = "William";    -estamos declarando o valores para as propriedades da classe
+		pessoa1.Idade = 39;             
+		
+		pessoa1.Apresentar();        -estaos inicializando o metodo da classe
+		
+	-------------------------------------------------------------------------------------------------------------------
+
+	EXPLORANDO A SINTAXE
+
+	Para chamar algum metodo ou dar valor a uma variavelapós a classe ser instanciada e aramazenada em uma variavel,
+	devemos trazer o ponto , dessa forma:
+
+		pessoa1.Nome 
+		pessoal.Idade
+		
+	Todo final de comando tem que ter o ;
+	
+	Pode quebra a linha usando o sinal de + , por exemplo:
+	
+		Console.WriteLine ($"Olá, meu nome é " +
+		$"{Nome}, e tenho {Idade} anos ")
+		
+	OBS: Estamos pulando linha como forma de organizar o código e não no console do programa executado
+
+	Para quebrar uma linha na execução do programa , podemos usar o \n , dessa forma:
+	
+		Console.WriteLine ($"Olá, meu nome é {Nome} \n e tenho {Idade} anos ")  
+		
+	--------------------------------------------------------------------------------------------------------------------
+	
+	CONVENÇÕES CASE
+	
+	Precisamos seguir alguns padrões , ou mais conhecidos como convenções, para termos sempre o nosso código legivel, e não torna-lo poluido e confuso.
+	
+	Convenções do C#:
+	
+	É uma maneira de padronizar nossa codificação. o código vai compiar porém estará confuso de se ler
+	
+	case: padrões de escrita para nomes, exemplo:
+	
+	camelCase , PascalCase, snake_case, spinal-case
+	
+	No C# usamos o camelCase e o PascalCase
+	----------------------------------------------------------------------------------------------------------------------
+	
+	CONVENÇÕES CASE NO CÓDIGO
+	
+	Para nomear uma classe, propriedade, metodo vc sempre vai usar o PascalCase
+	
+	Para nomear uma variavel e constatne usar o metodo camelCase
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+	CONVEÇÕES DE ESCRITA DA CLASSE
+	
+	A recomendação é que nunca abrevie, por exemplo:
+	
+	public void NomeRepLegal {get; set;}
+	
+	o certo seria :
+	
+	public void NomeRepresentanteLegal {get; set;}
+	
+	O nome do seu arquivo obedeça o nome da sua classe
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+	CONVEÇÕES DE NOME E VARIÁVEL
+	
+	O único caractere especial a utiliza será o _ (underline), não utiliza o *&¨%$#@! 
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+										2-TIPOS DE DADOS
+
+	INTRODUÇÃO A TIPOS E INTEIROS
+	
+	string - uma série de caracteres ( um texto com letras, numeros e caracteres especiais)
+	char - Um caractere unico
+	bool - valor booleano (verdadeiro ou falso)
+	int - valor numerico inteiro o seu range é de -2bilhoes e +2 bilhoes, e dentro do int temos alguns tipos:
+		byte - 0 a 255
+		e mais alguns tipo o unit, short,long ulong  sendo o u de ussigned (sem sinal)não pode represntar valores negativos
+		e não podendo representar valores negativos a sua capacidade de representar valores positivos dobram sendo do 0 a 4 bilhoes sendo o long mais de 3 trilhoes.
+		
+	---------------------------------------------------------------------------------------------------------------------
+
+	NUMEROS COM CASAS DECIMAIS 
+	
+	decimal - valores decimais com 28 e 29 digitos significativos (ideal para valores monetários, precisão)
+	float - valores decimais grandes
+	double - valores demais grandes ( mas preciso que o float)
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+	MANIPULANDO VARIÁVEIS
+	
+	tipo da variavel e o nome da variavel   -- essa é a estrutura
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+	O TIPO DATETIME
+	
+	O tipo DATETIME é uma maneira de representar datas no C#, ele é do tipo STRUCT , Exemplo:
+	
+	
+	DateTime dataAtual = DateTime.Now;
+	Console.WriteLine(dataAtual);
+	
+	DateTime dataAtual = DateTime.Now.AddDays(5);
+	Console.WriteLine(dataAtual.ToString("dd/MM/yyyy HH:mm"));
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+		
+		
+	
+	
+	
+	
+	
+	
+		
+
+			
+		
+
+		
+
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

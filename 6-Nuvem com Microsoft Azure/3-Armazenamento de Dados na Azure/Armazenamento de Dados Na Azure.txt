@@ -1,0 +1,387 @@
+	-----------------------------------------------------------------------------------------------------------------
+	******************************** ARMAZENAMENTO DE DADOS NA AZURE ************************************************
+	-----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO
+	
+	Azure Blonb Storage -Armazenar imagens, Video/Audio, Arquivos de log e etc
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO UMA STORAGE ACCOUNT
+	
+	Criar um Recurso > Categorias - Armazenamento> Conta de Armazenamento
+	
+	Grupo de Recursos - sgstorage
+	
+	Nome da Conta de Armazenamento - storagewfontelas
+	
+	Standart
+	
+	Examinar e Criar
+	
+	Após criado Acesse Armazenamento de dados - Contêiners > + Conteiner(criar novo container) 
+	Nome - imagens
+	Nivel de Acesso Público - Conteiner e Criar
+	
+	Clique no container Carregar, Selecione o Arquivo e faça o upload > carregar
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O NOSSO PROJETO
+	
+	Vamos criar uma pasta chamada AzureBlobStorageAPI e vamos criar um projeto API
+	
+		-dotnet new webapi
+	Dentro da pasta Controller , vamos criar uma controller nova chamada ArquivosController
+	
+		  [ApiController]
+	      [Route("[controller]")]
+		  public class ArquivosController : ControllerBase
+		  {
+				
+		  }
+		  
+	No Azure dentro da Conta de Armazenamento storagewfontelas acesse Chaves e gere uma nova Cadeia de conexão, copie a chave e insira abixo dentro de "BlobconnectionString"
+	
+	
+	
+	Agora dentro de appsettings.Development.json e dentro da pasta appsettings.json vamos inserir :
+
+		"BlobconnectionString": "DefaultEndpointsProtocol=https;AccountName=storagewfontelas;AccountKey=8b3RN8SDsQtcM9Tn/urz5h86HTbAz94JVaHeY88xNk56yerGMdV7hKC5qB0y4eqFZBo1tQZFzQci+AStueQz/g==;EndpointSuffix=core.windows.net",
+		"BlobContainerName": "imagens"
+		
+		
+	Voltando na controller ArquivosController , vamos criar duas propriedades e um constructor recebendo a interface IConfigutation para pegarmos as informações do nossos arquivos json.
+	
+		private readonly string _connectionString;
+        private readonly string _containerName;
+
+        public ArquivosController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetValue<string>("BlobConnectionString");
+            _containerName = configuration.GetValue<string>("BlobContainerName");
+        }
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	CRIANDO E TESTANDO O METODO UPLOAD
+	
+	Primeiro vamos ter que instalar o pacote do Azure em relação ao Blob,no Terminal digite o seguinte:
+	
+	-dotnet add package Azure.Storage.Blobs
+	
+	Agora vamos criar um metodo do tipo IactionResult UploadArquivo , passando como parametro a interface IFormFile, essa interface tem bastante parametrização na hora de fazer uploads dos arquivos
+	
+	using Azure.Storage.Blobs;
+	using Azure.Storage.Blobs.Models;
+	
+	   [HttpPost("Upload")]
+        public IActionResult UploadArquivo(IFormFile arquivo)
+        {
+            //BLOB = Binary Large Object
+            BlobContainerClient container = new(_connectionString, _containerName);
+            BlobClient blob = container.GetBlobClient(arquivo.FileName);
+
+            using var data = arquivo.OpenReadStream();
+            blob.Upload(data, new BlobUploadOptions
+            {
+                HttpHeaders = new BlobHttpHeaders {ContentType = arquivo.ContentType}
+            });
+            
+            return Ok(blob.Uri.ToString());
+        }
+		
+	Após isso dotnet watch run para rodar a API no Swagger , enviei um arquivo para Upload e na resposta pegue  url e verifique se esta abrindo.
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO E TESTANDO O MÉTODO DE DOWNLOAD
+	
+	Vamos criar um novo metodo de Download
+	
+	
+        [HttpGet("Download/{nome}")]
+        public IActionResult DownloadArquivo(string nome)
+        {
+            BlobContainerClient container = new(_connectionString, _containerName);
+            BlobClient blob = container.GetBlobClient(nome);
+
+            if(!blob.Exists())
+                return BadRequest();
+
+            var retorno = blob.DownloadContent();
+            return File(retorno.Value.Content.ToArray(), retorno.Value.Details.ContentType, blob.Name);
+        }
+		
+	---------------------------------------------------------------------------------------------------------------
+
+	CRIANDO E TESTANDO O MÉTODO DE DELETAR ARQUIVO
+	
+	
+        [HttpDelete("Apagar/{nome}")]
+        public IActionResult DeletarArquivo(string nome)
+        {
+            BlobContainerClient container = new(_connectionString, _containerName);
+            BlobClient blob = container.GetBlobClient(nome);
+
+            blob.DeleteIfExists();
+            return NoContent();
+        }
+	
+	
+	-----------------------------------------------------------------------------------------------------------------
+	CRIANDO E TESTANDO O METODO LISTAR ARQUIVOS
+	
+	Vamos criar uma classe e nomeala de BlobDto (Data Transfer Object) , uma classe simplificada que nos usamos para retorno de API.
+	
+	     public class BlobDto //Data transfer object
+		{
+			public string Nome { get; set; }
+			public string Tipo { get; set; }
+			public string Uri { get; set; }
+		}
+		
+	Dentro do ArquivoController:
+
+		[HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            List<BlobDto> blobsDto = new List<BlobDto>();
+            BlobContainerClient container = new(_connectionString, _containerName);
+
+            foreach(var blob in container.GetBlobs())
+            {
+                blobsDto.Add(new BlobDto
+                {
+                    Nome = blob.Name,
+                    Tipo = blob.Properties.ContentType,
+                    Uri = container.Uri.AbsoluteUri + "/" + blob.Name
+
+                });
+
+            }
+            return Ok(blobsDto);
+        } 	
+	--------------------------------------------------------------------------------------------------------------------
+	
+	
+	INTRODUÇÃO AO AZURE TABLES
+	
+	azure Tables é um serviço que armazena grandes quantidades de dados estruturados NoSQL em tabelas na nuvem, armazenado em chave/valor.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O NOSSO PROJETO E ADICIONANDO AS CHAVES
+	
+	O Azure Table vai ficar dentro da nossa StorageAccount (Conta de Armazenamento), vamos utilizar a mesma storage account storagewfontelas
+	
+	storagewfontelas>Armazenamento de Dados > Tabelas > +Tabela e nomear
+	
+	vamos apagar a tabela pois ela vai ser criada automaticamente depois 
+	
+	Acesse Chaves de Acesso > Mostrar as Chaves e vamos copiar a Cadeia de Conexão
+	
+	Ok, agora vamos criar um novo projeto no VSCode:
+	
+	Crie uma pasta com nome de WebAPIAzureTable
+	
+	Abra o terminal e crie um projeto Webapi
+	
+	-dotnet new webapi
+	
+	Coloque a cadeia de Conexão dentro de appsettings.Development.json e appsettings.json :
+	
+	"SAConnectionString": "DefaultEndpointsProtocol=https;AccountName=storagewfontelas;AccountKey=8b3RN8SDsQtcM9Tn/urz5h86HTbAz94JVaHeY88xNk56yerGMdV7hKC5qB0y4eqFZBo1tQZFzQci+AStueQz/g==;EndpointSuffix=core.windows.net"
+			
+	"AzureTableName": "Contatos"   //Nome da tabela que será criada
+	
+	Ok, agora vamos criar uma nova Controller e nomeala de ContatoController
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	OBTENDO A CONFIGURAÇÃO E CRIANDO A MODEL
+	
+	Vamos preparar a obtenção das nossas chaves na controller
+	
+	    private readonly string _connectionString;
+        private readonly string _tablename;
+        public ContatoController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetValue<string>("SAConnectionString");
+            _tablename = configuration.GetValue<string>("AzureTableName");
+        }
+		
+	Vamos criar	uma pasta de noemalá de Models, dentro da pasta vamos criar uma classe Contato
+	
+	Agora vamos instalar um pacote do Azure Table
+	-dotnet add package Azure.Data.Tables //pacote para facilitar e executar a integração com o AzureTableName
+	
+	voltando a classe Contato, vamos herdar a interface ITableEntity e implementar a sua interface, altere todos os get; e set; para somente {get; set;}ficando assim:
+	
+		 public class Contato : ITableEntity
+		{
+			public string PartitionKey { get; set; }
+			public string RowKey { get; set; }
+			public DateTimeOffset? Timestamp { get; set; }
+			public ETag ETag { get; set; }
+		}
+		
+		vamos criar agora as nossas propeidades dentro da classe Contato
+		
+		public string Nome { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+		
+	---------------------------------------------------------------------------------------------------------------	
+	
+	CRIANDO O MÉTODO DE INSERIR
+	
+	Vamos criar um metodo em comum que vai obter nosso table service , a nossa tabela que nos vamos poder armazenar, esse metodo vai ser encomun em todos os nossos endpoints, então vamos aproveitar para poder criar aqui para reaproveitar depois:
+	
+			using Azure.Data.Tables;
+		
+			private TableClient GetTableClient()
+			{
+				var serviceClient = new TableServiceClient(_connectionString);
+				var tableClient = serviceClient.GetTableClient(_tablename);
+
+				tableClient.CreateIfNotExists();
+				return tableClient;
+			}
+	
+	Agora vamos criar um metodo para fazer o nosso Post:
+
+			using WebAPIAzureTable.Models;
+			
+			[HttpPost]
+			public IActionResult Criar(Contato contato)
+			{
+				var tableClient = GetTableClient();
+
+				contato.RowKey = Guid.NewGuid().ToString();
+				contato.PartitionKey = contato.RowKey;
+
+				tableClient.UpsertEntity(contato);
+
+				return Ok(contato);
+			}			
+			
+	-------------------------------------------------------------------------------------------------------------------		
+	
+	TESTANDO O METODO INSERIR
+	
+	-dotnet watch run
+
+	vamos inserir algumas informações no metodo post e executar
+	
+	Agora verificar se salvou no Azure , vamos acessar a opção Navegador de Armazenamento > Tabelas > Contatos
+	
+	Podemos usar opicionalmente o Azure Store Explorer, pesquise no google e baixe para o computador e instale
+	
+	Após instalar acesse com a sua conta Azure < Abrir gerenciador
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O METODO DE ATUALIZAR
+	
+		[HttpPut("{id}")]
+        public IActionResult Atualizar(string id, Contato contato)
+        {
+            var tableClient = GetTableClient();
+            var contatoTable = tableClient.GetEntity<Contato>(id, id).Value;
+
+            contatoTable.Nome = contato.Nome;
+            contatoTable.Email = contato.Email;
+            contatoTable.Telefone = contato.Telefone;
+
+            tableClient.UpsertEntity(contatoTable);
+            return Ok();
+        }
+		
+	Pegue o id em Rowkey ou PartitionKey e clique Altere os dados e clique em Executar
+	
+	--------------------------------------------------------------------------------------------------------------------
+	CRIANDO O METODO DE LISTAGEM
+	
+		[HttpGet("Listar")]
+        public IActionResult ObterTodos()
+        {
+            var tableClient = GetTableClient();
+            var contatos = tableClient.Query<Contato>().ToList();
+            return Ok(contatos);
+        }
+		
+	--------------------------------------------------------------------------------------------------------------------
+	CRIANDO O METODO OBTER POR NOME
+
+		[HttpGet("ObterPorNome/{nome}")]
+        public IActionResult ObterPorNome(string nome)
+        {
+            var tableClient = GetTableClient();
+            var contatos = tableClient.Query<Contato>(x => x.Nome == nome).ToList();
+            return Ok(contatos);
+        }
+		
+	-------------------------------------------------------------------------------------------------------------------
+	CRIANDO O METODO DELETAR
+
+	    [HttpDelete("{id}")]    
+        public IActionResult Deletar(string id)
+        {
+            var tableClient = GetTableClient();
+            tableClient.DeleteEntity(id, id);
+            return NoContent();
+        }
+		
+	-----------------------------------------------------------------------------------------------------------------	
+	
+
+
+	Parabéns por chegar até aqui! Keep rocking 🚀🚀🚀
+	 
+
+	Separamos aqui alguns materiais complementares como artigos, apostilas, apresentações, entre outros. Esses materiais serão úteis para você se aprofundar ainda mais nos principais temas deste Módulo, listados a seguir.
+
+	 
+
+	Links úteis
+	Guia de primeiros passos da Azure: https://azure.microsoft.com/en-us/get-started/#start-building
+
+	Como criar um novo projeto na Azure passo a Passo: https://www.youtube.com/watch?v=0bSA7RXrbAg
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,15 @@
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\bin\Debug\net6.0\ValidacaoDeNota.exe
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\bin\Debug\net6.0\ValidacaoDeNota.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\bin\Debug\net6.0\ValidacaoDeNota.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\bin\Debug\net6.0\ValidacaoDeNota.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\bin\Debug\net6.0\ValidacaoDeNota.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\refint\ValidacaoDeNota.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ValidacaoDeNota.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\ValidacaoDeNota\obj\Debug\net6.0\ref\ValidacaoDeNota.dll

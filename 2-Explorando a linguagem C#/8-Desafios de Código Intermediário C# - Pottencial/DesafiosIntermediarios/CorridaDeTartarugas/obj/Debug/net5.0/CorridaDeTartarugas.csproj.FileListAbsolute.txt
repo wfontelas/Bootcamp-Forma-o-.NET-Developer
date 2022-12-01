@@ -1,0 +1,16 @@
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.exe
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.deps.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.runtimeconfig.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.runtimeconfig.dev.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\bin\Debug\net5.0\CorridaDeTartarugas.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.AssemblyInfoInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.AssemblyInfo.cs
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.csproj.CoreCompileInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\refint\CorridaDeTartarugas.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\CorridaDeTartarugas.genruntimeconfig.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\CorridaDeTartarugas\obj\Debug\net5.0\ref\CorridaDeTartarugas.dll

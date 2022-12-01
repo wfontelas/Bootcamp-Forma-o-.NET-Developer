@@ -1,0 +1,15 @@
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\bin\Debug\net6.0\HoHoHo.exe
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\bin\Debug\net6.0\HoHoHo.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\bin\Debug\net6.0\HoHoHo.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\bin\Debug\net6.0\HoHoHo.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\bin\Debug\net6.0\HoHoHo.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\refint\HoHoHo.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\HoHoHo.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\HoHoHo\obj\Debug\net6.0\ref\HoHoHo.dll

@@ -1,0 +1,132 @@
+	------------------------------------------------------------------------------------------------------------------------
+	********************************** INTRODUÇÃO, ABSTRAÇÃO E ENCAPSULAMENTO COM C# ***************************************
+	-------------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO POO
+	
+	-Abstração
+	-Encapsulamento 
+	-Herança
+	-Polimorfismo
+	
+	O principal conceito da POO são as classes e objetos 
+	
+	classe - representação de um objeto, representação de algo do mundo real
+	
+	Objeto - A classe concretizada
+	
+	------------------------------------------------------------------------------------------------------------------------
+	TIPOS DE PARADIGMAS
+	
+	-Programação orientada a objetos (é o que estamos estudando!)  -- o mais usado também
+	-Programação estruturada
+	-Programação imperativa
+	-Programação procedural
+	-Programação orientada a eventos
+	-Programação lógica
+	
+	e por ai vai...
+	
+	------------------------------------------------------------------------------------------------------------------------
+	
+	ABSTRAÇÃO
+	
+	Abstrair um objeto do mundo real para um contexto específico, considerando apenas os atributos importantes.
+	
+	Ex: Uma pessoa da vida real possui muitas caracteristicas , altura,cor dos olhos, cor do cabelo, peso e etc , vc não vai representar tudo que uma pessoa tem , pois não faz sentido dependendo do seu contexto.
+	
+	------------------------------------------------------------------------------------------------------------------------
+	
+	ABSTRAÇÃO NA PRÁTICA
+	
+	Crie uma pasta e nomea a de Models e dentro dessa pasta crie uma classe chamada Pessoa
+	
+	 public class Pessoa
+    {
+        public string Nome { get; set; }
+        public int Idade { get; set; }
+
+        public void Apresentar()
+        {
+            Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos.");
+        }
+    }
+	
+	na classe Program:
+	
+	using ExemploPOO.Models;
+
+	Pessoa p1 = new Pessoa(); //Criando um objeto através da classe
+	p1.Nome = "William";
+	p1.Idade = 39;
+
+	p1.Apresentar();
+	-----------------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO ENCAPSULAMENTO
+	
+	O Encapsulamento serve para proteger uma classe e definir limites para alteração de suas propiedades.
+	Serve para ocultar seu comportamento e expor somente o necessário.
+	
+	Ex: vc quer aumentar o volume da sua TV ,vc pega o controle e aumenta , vc não precisa saber onde esse volume esta , vc somente precisa usar a função de aumentar., pois esse processo de aumentar o volume esta oculto, encapsulado, assim vc não corre o risco de fazer uma ação indesejada.
+	
+	Ex: Conta bancária =  eu tenho uma classe chamada conta corrente:
+	
+	ContaCorrente
+	
+	+Numero: int  //Quando temos o sinal de + , quer dizer que a propriedade é pública 
+	-Saldo: decimal //Quando temos o sinal de - , quer dizer que a propriedade é privada , que ninguém vai poder alterar esse valor
+	
+	+Sacar(decimal valor)
+	
+	Ok, vamos supor que criei o objeto e coloquei o Saldo como privado, ou seja sendo assim ninguém pode alterar o saldo.Vamos supor que tenha uma regra especifica que o meu Saldo não pode fiar negativo,então se eu tentar sacar um valor que seja maior que o meu Saldo, eu não deva permitir essa operação. Vamos supor que eu tenha 1000 de saldo e eu queira realizar 1500 de saque, eu não posso permitir isso.
+	------------------------------------------------------------------------------------------------------------------
+	
+	ENCAPSULAMENTO NA PRÁTICA
+	
+	Dentro da pasta Models, crie uma classe e nomea de ContaCorrente
+	
+	 public ContaCorrente(int numeroConta, decimal saldoInicial)
+        {
+            NumeroConta = numeroConta;
+            saldo = saldoInicial;
+        }
+        public int NumeroConta { get; set; }
+        private decimal saldo;
+
+        public void Sacar(decimal valor)
+        {
+            if (saldo >= valor)
+            {
+                saldo -= valor;
+                Console.WriteLine("Saldo realizado com sucesso");
+            }
+            else
+            {
+                Console.WriteLine("Valor desejado é maior que o saldo disponível");
+            }
+        }
+
+        public void ExibirSaldo()
+        {
+            Console.WriteLine("O seu saldo disponível é  " + saldo);
+        }
+		
+		
+		na classe Program:
+		
+		ContaCorrente c1 = new ContaCorrente(numeroConta: 123, saldoInicial: 1000);
+
+		c1.ExibirSaldo();
+		c1.Sacar(500);
+		c1.ExibirSaldo();
+		
+	------------------------------------------------------------------------------------------------------------------------	
+		
+	
+	
+	
+	
+	 
+	 
+	
+	

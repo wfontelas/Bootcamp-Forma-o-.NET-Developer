@@ -1,0 +1,168 @@
+	-----------------------------------------------------------------------------------------------------------------
+	************************************* HERANÇA E POLIMORFISMO COM C# ********************************************
+	-----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO HERANÇA
+	
+	A Herança nos permite reutilizar atributos, métodos e comportamentos de uma classe em outras classes
+	Serve para agrupar objetos que são do mesmo tipo, porém com características diferentes.
+	
+	--------------------------------------------------------------------------------------------------------------
+	
+	HERANÇA NA PRÁTICA
+	
+	Vamos criar um nova classe na pasta Models chamada de Aluno e outra chamada de Professor:
+	
+	dentro da classe Aluno:
+	
+	 public class Aluno : Pessoa
+    {
+        public double Nota { get; set; }    
+    }
+	
+	dentro da classe Professor:
+	
+	 public class Professor : Pessoa
+    {
+        public decimal Salario { get; set; }
+    }
+	
+	dentro da classe Program:
+	
+	Aluno a1 = new Aluno();
+
+	a1.Nome = "Leonardo";
+	a1.Idade = 20;
+	a1.Email = "teste@teste.com";
+	a1.Nota = 10;
+	a1.Apresentar();
+		
+	--------------------------------------------------------------------------------------------------------------
+
+	CONSIDERAÇÕES FINAIS SOBRE HERANÇA
+	
+	Classe Pai = Pessoa 
+	Classe Filha = Professor e Aluno
+	
+	-Evitar Herança em cascata
+	
+		Ex: Professor herda de Pessooa, Diretor herda de Professor, Assitente herda de Diretor e assim  por diante...
+	
+	
+	-Não pode herdar mais de uma classe 
+	
+	--------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO POLIMORFISMO
+	
+	Polimorfismo = vem do grego "muitas formas"
+	
+	Com o polimorfismo , podemos SOBREESCREVER MÉTODOS das classes filhas para que se comportem de MANEIRA DIFERENTE E TER A SUA PRÓPRIA IMPLEMENTAÇÃO.
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	POLIMORFISMO EM TEMPO DE EXECUÇÃO
+	
+	Para Sobreescrever o metodo usa se a palavra chave virtual na classe Pai e override nas classes filhas
+	
+	
+	Na classe pai Pessoa :
+	
+		public virtual void Apresentar() //Para poder sobreescrever nas classes filhas, use virtual
+        {
+            Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos.");
+        }
+		
+	Na classe filha Aluno:
+
+		public override void Apresentar() //Para poder sobreescrever da classe do tipo virtual, use override
+        {
+            Console.WriteLine($"Olá meu nome é {Nome}, tenho {Idade} anos, e sou"+  
+                               $" e sou um aluno nota {Nota}");
+        }
+	
+	Na classe filha Professor:
+
+		public override void Apresentar()
+        {
+            Console.WriteLine($"Olá, meu nome é {Nome}, tenho {Idade} anos,"+
+                              $"sou professor e ganho {Salario}");
+        }
+		
+	Na classe Program:
+
+		Aluno a1 = new Aluno();
+		a1.Nome = "Leonardo";
+		a1.Idade = 20;
+		a1.Email = "teste@teste.com";
+		a1.Nota = 10;
+		a1.Apresentar();
+
+		Professor p1 = new Professor();
+		p1.Nome = "William";
+		p1.Idade = 39;
+		p1.Salario = 1000;
+		p1.Apresentar();
+		
+	--------------------------------------------------------------------------------------------------------------	
+	
+	CONSIDERAÇÕES FINAIS
+	
+		Polimorfismo em tempo de compilação (Overload/Early Binding):
+		
+		public class Calculadora
+		{
+			public int Somar(int num1, int num2)
+			{
+				return num1+ num2;
+			}
+			
+			public int Somar(int num1, int num2, int num3)
+			{
+				return num1 + num2 + num3;
+			}	
+		}
+		
+		Polimorfismo em tempo de execução (Override/Late Binding), depende de uma herança:
+		
+		    public class Pessoa
+			{
+				public string Nome { get; set; }
+				public int Idade { get; set; }
+				public string Email { get; set; }
+
+				public virtual void Apresentar() //Para poder sobreescrever nas classes filhas, use virtual
+				{
+					Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos.");
+				}
+			}
+			
+			public class Aluno : Pessoa
+			{
+				public double Nota { get; set; }
+
+				public override void Apresentar()
+				{
+					Console.WriteLine($"Olá meu nome é {Nome}, tenho {Idade} anos, e sou"+  
+									   $" e sou um aluno nota {Nota}");
+				}
+			}
+			
+	-----------------------------------------------------------------//------------------------------------------		
+			
+			
+		
+		
+		
+		
+		
+		
+
+		
+			
+		
+	
+	
+		
+	
+	

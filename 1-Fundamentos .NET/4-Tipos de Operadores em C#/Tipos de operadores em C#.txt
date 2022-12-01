@@ -1,0 +1,351 @@
+	------------------------------------------------------------------------------------------------------------------
+	************************************TIPOS DE OPERADORES EM C#*************************************************
+	------------------------------------------------------------------------------------------------------------------
+									     1-OPERADORES DE ATRIBUIÇÃO
+										 
+	INTRODUÇÃO OPERADOR DE ATRIBUIÇÃO
+	
+	= -O Valor de atribuição
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	COMBINANDO OPERADORES
+	 
+	
+	 c = c + 5  ou c += 5  - ou quer dizer repete a variavel mais o valor declarado
+	 
+	 c = c - 5 ou c -= 5   - repete a variavel menos o valor declarado
+	 
+	 c = c * 5 ou c*= 5
+	 
+	------------------------------------------------------------------------------------------------------------------
+
+	CONVERTENDO TIPOS DE VARIÁVEIS
+	
+	Cast ou Casting -trabalho de conversão do tipo string para o tipo inteiro
+	
+	Podemos usar a classe Convert e o metodo ToInt32 , ficando assim:
+	
+	int a = Convert.ToInt32("5")  ou  int a = int.parse("5")
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	DIFERENÇA ENTRE CONVERT E PARSE
+	
+	A diferença principal entre eles esta no tratamento de valores nulos
+	
+	int a = Convert.ToInt32(null)  - O resultado será convertido para 0
+	
+	int a = int.Parse(null) - Trará um erro , que o valor não pode ser nulo
+	
+	---------------------------------------------------------------------------------------------------------------------
+	
+	CONVERSÃO PARA STRING
+	
+	int inteiro = 5;
+	string a = inteiro.ToString();  
+
+	Poderia fazer dessa forma abaixo porém seria redundante:
+	
+	Convert.ToString()  
+	 
+	OBS: Não existe o parse de conversão para String
+	--------------------------------------------------------------------------------------------------------------------
+	
+	CAST IMPLÍCITO
+	
+	Conversão de diferetnes tipos que vc não precisa usar a conversão que ele faz automaticamente para vc.
+	
+	No caso abaixo ele converte o tipo inteiro , pois um inteiro cabe no double
+	
+	int a = 5;
+	double b = a
+
+	da mesma forma que um inteiro cabe no long, a conversão será implicita 	
+	
+	int a = 5
+	long b = a
+	
+	Agora ao contrario um long não cabe no inteiro, então precisamos converter de forma manual.
+	
+	long a = 5
+	int b = Convert.ToInt32(a);
+	
+	Se trouxermos o valor maximo de long para converter  no caso utilizando o metodo MaxValue dará um erro.
+	
+	long a = long.MaxValue
+	int a = Convert.ToInt32(a);  - dara um erro pois o valor maximo de um long é trilhões e de um int é bilhões,
+	portanto não cabe no int, mesmo convertendo
+	
+	Ao Contrario dará certo , convertendo o valor maximo de um inteiro para um long 
+	
+	int a = int.MaxValue
+	long b = a;
+	---------------------------------------------------------------------------------------------------------------------
+	ORDEM DOS OPERADORES
+	
+	Para representar o que deve ser resolvido primeiro, vc precisa passar parenteses 
+	
+	double a = 4 / 2 + 2;   - o resultdo será 4 , pois primeiro esta efetuando a divisão para depois a soma 
+	
+	double a = 4 / (2 + 2);  - o resultado será 1 , pois primeiro esta efetuando a soma dentro dos parenteses e depois dividindo.
+	
+	----------------------------------------------------------------------------------------------------------------------
+	
+	CONVERTENDO DE MANEIRA SEGURA (TryParse)
+	
+	string a = "15-";
+	
+	int b = 0;				    	int b = 0;
+	int.TryParse(a, out b);    ou   int.TryParse(a, out int b)
+	
+	Console.WriteLine(b);
+	Console.WriteLine("Conversão realizada com sucesso");
+	
+	------------------------------------------------------------------------------------------------------------------
+								2-OPERADORES CONDICIONAIS
+								
+								
+	INTRODUÇÃO OPERADORES CONDICIONAIS
+
+	O opérador condicional possibilita mudar o fluxo de execução de código, indicando um caminho que ele deve percorrer
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	OPERADOR CONDICIONAL NA PRÁTICA e DEBUGANDO O OPERADOR CONDICIONAL
+	
+	int quantidadeEstoque = 10;
+	int quantidadeCompra = 4;
+	bool possivelVenda = quantidadeEstoque >= quantidadeCompra;
+	
+	Console.WriteLine($"Quantidade em Estoque: {quantidadeEstoque}");
+	Console.WriteLine($"Quantidade em Compra: {quantidadeCompra}");
+	Console.WriteLine($"É possivel realizar a venda? {possivelVenda}");
+	
+	if(possivelVenda)
+	{
+		Console.WriteLine("Venda Realizada");
+	}
+	else
+	{
+		Console.WriteLine("Desculpe, não temos a quantidade desejada em estoque.");
+	
+	}
+		
+	---------------------------------------------------------------------------------------------------------------------
+	
+	IF ANINHADO
+	
+	int quantidadeEstoque = 10;
+	int quantidadeCompra = 4;
+	bool possivelVenda = quantidadeCompra > 0 && quantidadeEstoque >= quantidadeCompra;
+	
+	Console.WriteLine($"Quantidade em Estoque: {quantidadeEstoque}");
+	Console.WriteLine($"Quantidade em Compra: {quantidadeCompra}");
+	Console.WriteLine($"É possivel realizar a venda? {possivelVenda}");
+	
+	if(quantidadeCompra == 0)
+	{
+		Console.WriteLine("Venda inválida");
+	}	
+	
+	else if(possivelVenda)
+	{
+		Console.WriteLine("Venda Realizada");
+	}
+	else
+	{
+		Console.WriteLine("Desculpe, não temos a quantidade desejada em estoque.");
+	
+	}
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	APRENDENDO O SWITCH CASE
+	
+	Console.WriteLine("Digite uma letra")
+	string letra = Console.ReadLine();
+	
+	 Console.WriteLine("Digite uma letra");
+	string letra = Console.ReadLine();
+
+    switch(letra)
+	{
+		case "a":
+		case "e":
+		case "i":
+		case "o":
+		case "u":
+			Console.WriteLine("Vogal");
+			break;
+			
+		default:
+			Console.WriteLine("Não é uma vogal");
+			break;
+    }
+	
+	se fosse com o if seria assim:
+	
+		if(letra == "a" ||
+		   letra == "e" ||
+		   letra == "i" ||
+		   letra == "o" ||
+		   letra == "u" )
+		{
+			Console.WriteLine("Vogal");
+		}
+		else 
+		{
+			Console.WriteLine("Não é uma Vogal");
+			
+	
+	
+	ou ainda poderia ficar assim bem verboso:
+	
+	
+		if ( letra == "a")
+		{
+			Console.WriteLine("Vogal")
+		}
+		else if ( letra == "e")
+		{
+			Console.WriteLine("Vogal");
+		}
+		else if ( letra == "i")
+		{
+			Console.WriteLine("Vogal");
+		}
+		else if ( letra == "o")
+		{
+			Console.WriteLine("Vogal");
+		}
+		else if ( letra == "u")
+		{
+			Console.WriteLine("Vogal");
+		}
+		else 
+		{
+			Console.WriteLine("Não é uma Vogal");
+		}
+
+	------------------------------------------------------------------------------------------------------------------
+
+									3-OPERADORES LÓGICOS
+									
+	INTRODUÇÃO A OPERADORES LÓGICOS
+
+	Operador OR (Pipe,||) = OU
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	OPERADOR OR NA PRÁTICA
+	
+	bool ehMaiorDeIdade = true;
+	bool possuiAutorizacaoDoResponsavel = false;
+	
+	if(ehMaiorDeIdade || possuiAutorizacaoDoResponsavel)  
+	{
+		Console.WriteLine("Entrada Liberada");
+	}
+	else
+	{
+		Console.WriteLine("Entrada não liberada");
+	}
+	
+	OBS: O operador OR sempre validara a opção uma das opções mesmo que uma seja TRUE e a outra FALSE, no resultado acima  a resposta seria TRUE pois o condicional IF sempre traz o TRUE.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO OPERADOR AND
+	
+	Ao contrário do operador OR onde somente uma das condições tem que ser verdadeira, no AND todas as condições tem que ser verdadeiras.
+	
+	Operador AND (&&)
+	------------------------------------------------------------------------------------------------------------------
+	
+	OPERADOR AND NA PRÁTICA
+	
+	bool possuiPresencaMinima = true;
+	double media = 7.5;
+	
+	if(possuiPresencaMinima && media >=7)
+	{
+		Console.WriteLine("Aprovado");
+	}
+	else
+	{
+		Console.WriteLine("Reprovado");
+	}
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO DO OPERADOR NOT
+	
+	Operador NOT (!)
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	OPERADOR NOT NA PRÁTICA
+	
+	bool choveu = true;
+	bool estaTarde = true;
+	
+	if(!choveu && !estaTarde)   //o sinal do NOT !(exclamção) nega , espera o falso
+	{
+		Console.WriteLine("Vou Pedalar");
+	}
+	else
+	{
+		Console.WriteLine("Não vou pedalar");
+	}
+	
+	---------------------------------------------------------------//-------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+		
+			
+
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+		
+
+		
+	

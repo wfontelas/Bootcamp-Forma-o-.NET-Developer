@@ -1,0 +1,253 @@
+	------------------------------------------------------------------------------------------------------------------*********************************** CLASSES ABSTRATAS E INTERFACES **********************************************
+	-----------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO CLASSE ABSTRATAS
+	
+	Uma classe abstrata tem como objetivo ser exclusivamente um modelo para ser herdado, portanto não pode ser instanciada.
+	Você pode implementar métodos ou deixá-los a cargo de quem herdar.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CLASSE ABSTRATA NA PRÁTICA
+	
+	protected = Protegido contra alterações externas, com excessão das suas classes filhas. Um private permissivo, ele é protegido contra as classes externas mas as classes filhas podem alterar.
+	
+	abstract = quando temso uma classe abstrata não coesguimos instancia-lá, essa classe somente poderá ser herdada. Assim, como temos também o metodo abstrato , que também não tem uma implementação. A implementação do Metodo Abstract será passada nas classes filhas (polimorfismo). Metodo obrigatório para quem for herdar(classes filhas).
+	
+	Ok, vamos lá, crie uma classe Conta na pasta Models:
+	
+	    public abstract class Conta //Classe abstrata , somente modelo
+		{
+			protected decimal saldo;
+			public abstract void Creditar(decimal valor);
+			public void ExibirSaldo()
+			{
+				Console.WriteLine("O saldo é: " + saldo);
+			}
+		}
+		
+	Ok, agora crie uma outra classe Corrente dentro da pasta Models , que herdará de Conta	
+	
+		public class Corrente : Conta
+		{
+			public override void Creditar(decimal valor)
+			{
+				saldo += valor;
+			}
+		}
+		
+	E na class Program:
+
+		Corrente c = new Corrente();
+		c.Creditar(500);
+		c.ExibirSaldo();
+		
+	------------------------------------------------------------------------------------------------------------------
+	
+	CONSTRUTOR POR HERANÇA
+	
+	Você também pode definir um construtor padrão na sua classe pai, para ser utilizado nas suas classes filhas
+	
+	Vamos supor que dentro de uma classe Pessoa é obrigatório vc passar a propriedade Nome, ou seja eu não quero nenhuma instancia da classe Pessoa sem Nome, quero que o nome seja obrigatório.
+	
+	base(nome) é como se estivesse chamanado o construtor da classe pai Pessoa
+	
+	Dentro da pasta Models , na classe Pessoa(Classe Pai), vamos criar os construtores:
+	
+		public Pessoa()
+        {
+            
+        }
+        public Pessoa(string nome)
+        {
+            Nome = nome;
+        } 
+		
+	Dentro da classe Aluno, vamos passar esse construtor obrigatorio:
+
+		 public Aluno()
+        {
+            
+        }
+        public Aluno(string nome) : base(nome)
+        {
+            
+        }
+		
+	Dentro da classe Professor, também vamos passar esse construtor obrigatório:
+	
+		public Professor()
+        {
+            
+        }
+        public Professor(string nome) : base(nome) //passando para a classe pai o nome
+        {
+            
+        }
+		
+	Dentro da classe Program:
+
+		Pessoa p1 = new Pessoa("William");
+		Aluno a1 = new Aluno("Caroline");
+		a1.Apresentar();
+		Professor prof = new Professor();
+		
+	------------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO A CLASSE SELADA (sealed)
+	
+	Uma classe selada tem como objetivo de impedir que outras classes façam uma herança dela, ou seja, nenhuma classe pode ser sua derivada. Também exeiste métodos e propriedades seladas. É como se vc tivesse colocado um ponto final na sua classe para que ela não seja herdada de maneira nenhuma.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CLASSE SELADA NA PRÁTICA (sealed)
+	
+	Vamos criar uma nova classe chamada de Diretor que vai herdar da classe Professor, porém não vai conseguir pois a classe Professor vai estar selada:
+	
+	public sealed class Professor : Pessoa
+    {...
+	
+	Na Classe diretor não conseguira herdar:
+	
+	public class Diretor : Professor
+    {
+        
+    }
+	------------------------------------------------------------------------------------------------------------------
+	
+	METODO SELADO NA PRÁTICA
+	
+	Na classe Professor:
+	
+		public sealed override void Apresentar()
+        {
+            Console.WriteLine($"Olá, meu nome é {Nome}, tenho {Idade} anos," +
+                              $" sou um professor e ganho {Salario}");
+        }
+		
+	Na classe Diretor retornará um erro na hora de herdar o metodo:
+	
+		 public class Diretor : Professor
+		{
+			public override void Apresentar()
+			{
+				Console.WriteLine("Diretor");
+			}
+		}
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	INTRODUÇÃO A CLASSE OBJECT
+
+	A classe System.Object é a mãe de todas as classes na hierarquia .NET, todas as classes derivam, direta ou inderatamente da classe Object, e ela tem como objetivo prover serviços de baixo nível para suas classes filhas.
+	
+	------------------------------------------------------------------------------------------------------------------
+	CLASSE OBJECT NA PRÁTICA
+	
+	Vamos criar uma nova classe chamada de Computador e sobreecrever um metodo da System.Object
+	
+	
+    public class Computador  //Não precisamos colocar o ":Object" para herdar da classe, pois é uma classe raiz
+    {
+        public override string ToString()
+        {
+            return "Método tostring sobreescrito";
+        }
+    }
+	
+	Na classe Program:
+	
+	Computador c = new Computador();
+	Console.WriteLine(c.ToString());
+	
+	------------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO INTERFACES
+	
+	Uma interface é um contrato que pode ser implementado por uma classe, é como se fosse uma classe abstrata, podendo definir métodos abstratos para serem implementados. Assim como uma classe abstrata, uma interface não pode ser instaciada.
+	Quando estamos falando de interface , falamos em implementar e não herdar.
+	Pode implementar , duas interfaces ou mais em uma mesma classe.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTERFACE NA PRÁTICA
+	
+	Vamos criar uma nova Pasta e nomealá de Interfaces, e vamos criar uma nova Interface chamada de ICalculadora
+	Por padrão os metodos de uma interface são do tipo public, então vc não precisa colocar os acessores (public, private ...) e também não teremos uma implementação nesses metodos. 
+	OBS:Uma interface não é instaciavél
+	
+		public interface ICalculadora
+		{
+			int Somar(int num1, int num2);
+			int Subtrair(int num1, int num2);
+			int Multiplicar(int num1, int num2);
+			int Dividir(int num1, int num2);
+		}
+		
+	Na classe Calculadora dentro da pasta Models , vamos implementar essa interface ICalculadora:
+	
+		public class Calculadora : ICalculadora //Implemente o import using e os metodos dessa interface
+		{ ...
+		
+	Na classe Program:
+
+		ICalculadora c = new Calculadora();
+		Console.WriteLine(c.Multiplicar(3,5));
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	MÉTODO PADRÃO NA INTERFACES
+	
+	Você também pode implementar um metodo padrão na sua interface, assim como uma classe abstrata, a partir do momento em que vc colocou um corpo para o seu metodo , vc o torna opcional em sua implementação.Então métodos que tem corpo são opcionais na implementação, agora métodos sem corpo são obrigatórios para implementação.
+	
+		public interface ICalculadora
+		{
+        int Somar(int num1, int num2);
+        int Subtrair(int num1, int num2);
+        int Multiplicar(int num1, int num2);
+        int Dividir(int num1, int num2)
+        {
+            return num1 / num2;
+        }
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	

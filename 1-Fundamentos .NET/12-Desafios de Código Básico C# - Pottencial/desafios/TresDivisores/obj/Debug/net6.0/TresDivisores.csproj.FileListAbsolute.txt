@@ -1,0 +1,15 @@
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\bin\Debug\net6.0\TresDivisores.exe
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\bin\Debug\net6.0\TresDivisores.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\bin\Debug\net6.0\TresDivisores.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\bin\Debug\net6.0\TresDivisores.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\bin\Debug\net6.0\TresDivisores.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\refint\TresDivisores.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\TresDivisores.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\12-Desafios de Código Básico C# - Pottencial\desafios\TresDivisores\obj\Debug\net6.0\ref\TresDivisores.dll

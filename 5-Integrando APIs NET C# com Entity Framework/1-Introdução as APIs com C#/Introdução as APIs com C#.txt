@@ -1,0 +1,129 @@
+	-----------------------------------------------------------------------------------------------------------------
+	************************************* INTRODUÇÃO AS APIs COM C# *************************************************
+	-----------------------------------------------------------------------------------------------------------------
+	INTRODUÇÃO
+	
+	Aprender e desenvolver uma API, utilizando o Entity Framework para a persitência de dados , juntamente com seus consceitos e funcionalidades.
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	O QUE É UMA API
+	
+	Uma API(Application Programming Interface) é uma forma de comunicação entre computadores ou programas de computadores.
+	
+	Em outras plavras , é um software que fornece informações para outro software.
+	
+	-----------------------------------------------------------------------------------------------------------------
+	
+	API DE FERIADOS
+	
+	Nager.Date: https://date.nager.at
+	
+	 - - https://date.nager.at/api/v3/PublicHolidays/2022/BR 
+	
+	Dogs: https://dog.ceo/dog-api
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	DOCUMENTAÇÃO E RETORNOS
+	
+	https://date.nager.at/Api
+	
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	EXEMPLOS DE USO
+	
+	Empresa de ecommerce ---> API de Entregas ---> Empresa de Transporte  ---API Externa
+						 <---				  <---
+						 
+		Frontend	<---->	     Backend    <---->       Banco de Dados   --- API Interna
+						 
+	----------------------------------------------------------------------------------------------------------------
+
+	USANDO O DOG API
+	
+	https://dog.ceo/dog-api
+	
+	----------------------------------------------------------------------------------------------------------------
+	CRIANDO NOSSA API
+	
+	dotnet new webapi
+	
+	dotnet watch run - comando para modificar o projeto com ele rodando
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A CONTROLLER
+	
+	Uma controller nada mais é que uma classe vai agrupar as suas requisições HTTP e vai dsiponibilizar os seus endpoints.
+	O nome de uma controller tem que ter a palavra controller no final da nome da classe Ex: WeatherForecastController
+	
+	VAmos criar uma nova classe dentro da pasta controller e nomealá de UsuarioController 
+	
+	using Microsoft.AspNetCore.Mvc;
+
+	namespace ModuloAPI.Controllers
+	{
+		[ApiController]
+		[Route("[controller]")]
+		public class UsuarioController : ControllerBase
+		{
+			[HttpGet("ObterDataHoraAtual")]
+			public IActionResult ObterDataHora()
+			{
+				var obj = new
+				{
+					Data = DateTime.Now.ToLongDateString(),
+					Time = DateTime.Now.ToLongTimeString()
+				};
+
+				return Ok(obj);
+			}
+		}
+	}
+	
+	--------------------------------------------------------------------------------------------------------------
+	ENTENDENDO AS ROTAS
+	
+	
+	Cada Conttoller vai ser uma sessão no swagger 
+	 Na swagger :
+	 
+	 usuario - vem da UsuarioController , porém ignora o Conttoller
+	 
+	 ObterDataHoraAtual - vem do atributo HttpGet("ObterDataHoraAtual)da Controller
+	 
+	https://localhost:7036/Usuario/ObterDataHoraAtual
+	
+	------------------------------------------------------------------------------------------------------------
+	
+	ENDPOINT COM PARAMETRO
+	
+	HttpGet("Apresentar/{nome}")]
+    public IActionResult Apresentar(string nome)
+    {
+        var mensagem = $"Olá {nome}, seja bem vindo!";
+        return Ok(new {mensagem});
+    }
+	----------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+	 
+	 
+	
+	
+		
+						 
+						 
+						 
+						 
+	
+	

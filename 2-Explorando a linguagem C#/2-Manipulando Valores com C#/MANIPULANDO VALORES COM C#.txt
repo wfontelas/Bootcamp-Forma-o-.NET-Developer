@@ -1,0 +1,207 @@
+	--------------------------------------------------------------------------------------------------------------
+	******************************* MANIPULANDO VALORES COM C# ***************************************************
+	--------------------------------------------------------------------------------------------------------------
+	
+	CONCATENANDO STRINGS
+	
+	 public void ListarAlunos()
+        {
+            Console.WriteLine($"Alunos do curso de: {Nome}");
+            
+            for (int count = 0; count < Alunos.Count; count++)
+            {
+                string texto = "Nº " + count +" - "+ Alunos[count].NomeCompleto;  
+                Console.WriteLine(texto);
+            }
+           
+        }
+		
+	----------------------------------------------------------------------------------------------------------------
+	
+	INTERPOLAÇÃO DE STRINGS
+	
+	  public void ListarAlunos()
+        {
+            Console.WriteLine($"Alunos do curso de: {Nome}");
+            
+            for (int count = 0; count < Alunos.Count; count++)
+            {
+                string texto = $"Nº {count} - {Alunos[count].NomeCompleto} ";
+                Console.WriteLine(texto);
+            }
+           
+        }
+	---------------------------------------------------------------------------------------------------------------
+	
+	AJUSTANDO A NUMERAÇÃO
+
+		  public void ListarAlunos()
+        {
+            Console.WriteLine($"Alunos do curso de: {Nome}");
+            
+            for (int count = 0; count < Alunos.Count; count++)
+            {
+                // string texto = "Nº " + count +" - "+ Alunos[count].NomeCompleto;
+                string texto = $"Nº {count + 1} - {Alunos[count].NomeCompleto} ";
+                Console.WriteLine(texto);
+            }
+           
+        }
+		
+	---------------------------------------------------------------------------------------------------------------
+
+	CONCATENAÇÃO DE VALORES
+
+		string numero1 = "10";
+		string numero2 = "20";
+
+		string resultado = numero1 + numero2;
+
+		Console.WriteLine(resultado);
+	------------------------------------------------------------------------------------------------------------------
+	
+	FORMATANDO VALORES MONETÁRIOS
+	
+		Quando colocamos : no final da interpolação $ , queremos formatar , com o C será de Moeda R$, pois o .Net pega a configuração do seu S.O.
+		
+		decimal valorMonetario = 1582.40M;
+
+		Console.WriteLine($"{valorMonetario:C}");
+	
+	-----------------------------------------------------------------------------------------------------------------
+	ALTERANDO A LOCALIZAÇÃO DO CÓDIGO
+	
+			ALTERANDO A LOCALIZAÇÃO DO CÓDIGO
+	
+		OBS: Para qualquer cálculo que envolva dinheiro ou finanças, o tipo Decimal deve ser sempre utilizado. Só este tipo tem a precisão adequada para evitar os erros críticos de arredondamento.
+		
+		
+		using System.Globalization;
+
+		CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
+		decimal valorMonetario = 1582.40M;
+
+		Console.WriteLine($"{valorMonetario:C}");
+		
+	-----------------------------------------------------------------------------------------------------------------
+
+	ALTERANDO LOCALIZAÇÃO DA CULTURA
+	
+		using System.Globalization;
+
+		CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+
+		decimal valorMonetario = 1582.40M;
+
+		Console.WriteLine(valorMonetario.ToString("C", CultureInfo.CreateSpecificCulture("en-US")));
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	FORMATAÇÃO PERSONALIZADA
+	
+		C1 -Representa uma casa decimal Ex: R$ 1.582,4
+		C2 -Representa duas casas decimais Ex: R$ 1.582,40
+		C3 -Representa três casas decimais Ex: R$ 1.582,400
+		C8 -Representa oito casas decimais Ex: R$ 1.582.40000000
+		
+		N1 - Representa uma casa decimal numerica Ex: 1.582,4 sem exibir o R$
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	REPRESENTANDO PORCENTAGEM
+	
+		double porcentagem = .3421;
+		Console.WriteLine(porcentagem.ToString("P"));
+
+		int numero = 123456;
+		Console.WriteLine(numero.ToString("##-##-##"));
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	FORMATANDO O TIPO DATETIME
+	
+		DateTime data = DateTime.Now;
+		Console.WriteLine(data);
+
+		DateTime data1 = DateTime.Now;
+		Console.WriteLine(data1.ToString("dd/MM/yyyy HH:mm"));
+
+		DateTime data2 = DateTime.Now;
+		Console.WriteLine(data2.ToString("dd/MM/yyyy hh:mm"));
+
+	------------------------------------------------------------------------------------------------------------------
+	
+	FORMATANDO DATA E HORA
+	
+		
+		DateTime data3 = DateTime.Now;
+		System.Console.WriteLine(data3.ToShortDateString());
+
+		DateTime data3 = DateTime.Now;
+		System.Console.WriteLine(data3.ToShortTimeString());
+		
+		
+		Para converter para o tipo DateTime:
+		
+		DateTime data4 = DateTime.Parse("30/04/2022 18:00");
+		Console.WriteLine(data4);
+		
+		DateTime data4 = DateTime.Parse("32/04/2022 18:00");
+		Console.WriteLine(data4);      //Irá apresentar uma exceção pois o dia 32 não é um dia valido
+	------------------------------------------------------------------------------------------------------------------
+
+	DATETIME COM TRYPARSE
+	
+	
+		Para fazer uma conversão segura , sem encerrar e apresentar exceção usamos o TryParse:
+		
+		string dataString = "2022-04-17 18:00";
+
+		DateTime.TryParseExact(dataString, 
+							"yyyy-MM-dd HH:mm,",
+							CultureInfo.InvariantCulture,
+							DateTimeStyles.None,out DateTime data5);
+		
+		Console.WriteLine(data5);
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	VALIDANDO O RETORNO DO TRYPARSE
+	
+		string dataString1 = "2022-04-17 18:00";
+
+		bool sucesso = DateTime.TryParseExact(dataString1, 
+							  "yyyy-MM-dd HH:mm,",
+							   CultureInfo.InvariantCulture,
+							   DateTimeStyles.None,out DateTime data5);
+		Console.WriteLine(data5);
+
+		if(sucesso)
+		{
+			Console.WriteLine($"Conversão com sucesso! Data: {data5}");
+		}
+		else
+		{
+			Console.WriteLine($"{dataString1} não é válida");
+		}
+	
+	-----------------------------------------------------//-----------------------------------------------------------
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+		
+	
+	
+	

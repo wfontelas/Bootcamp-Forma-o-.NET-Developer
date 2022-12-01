@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "h3rdxFQMLoPBPpqRNt5fdjS36J10It9ypgJDeGzzXH4=",
+  "Source": "WebAPIAzureTable",
+  "BasePath": "_content/WebAPIAzureTable",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

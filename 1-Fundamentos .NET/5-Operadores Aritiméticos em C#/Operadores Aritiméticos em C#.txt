@@ -1,0 +1,166 @@
+	------------------------------------------------------------------------------------------------------------------
+	***************************************OPERADORES ARITIMÉTICOS NO C#*********************************************
+	------------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO OPERADORES ARITIMÉTICOS
+	
+	vide slide 
+	
+	https://www.w3schools.com/cs/cs_operators.php
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A NOSSA CLASSE CALCULADORA
+	
+	Crie uma classe chamada Calculadora dentro da pasta Models
+	
+		public class Calculadora
+	    {
+			public void Somar(int x, int y)
+			{
+				Console.WriteLine($"{x} + {y} = {x + y}");
+			}
+
+			public void Subtrair(int x, int y)
+			{
+				Console.WriteLine($"{x} + {y} = {x + y}");
+			}
+			
+			public void Multiplicar(int x, int y)
+			{
+				Console.WriteLine($"{x} + {y} = {x + y}");
+			}
+			
+			public void Dividir(int x, int y)
+			{
+				Console.WriteLine($"{x} + {y} = {x + y}");
+			}
+		
+		}
+		
+	Instancie a classe calculadora na classe Programs e traga seus metodos:
+	
+		Calculadora calc = new Calculadora();
+		
+		calc.Somar(10, 30);
+		calc.Subtrair(10, 50);
+		calc.Multiplicar(15,45);
+		calc.Dividir(2, 2);
+		
+		
+		
+	No console dotnet run
+	
+	
+	OBS:Um metodo é um pedaço de código que vai fazer alguma ação
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	USANDO POTÊNCIAS
+	
+	Para acharmos a potência , vamos utilizar uma classe do C# chamada Math, dentro da classe Calculadora criada acima, vamos criar o metodo Potencia, vamos chamar a classe Math e trazer o metodo Pow (Potência):
+	
+		public void Potencia(int x, int y)
+		{
+			double pot = Math.Pow(x, y);
+			Console.WriteLine($"{x}^{y} = {pot}");
+		}
+
+    E na classe Program vamoschamar esse metodo:
+
+		calc.Potencia(3,3);
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	FUNÇÕES TRIGONOMÉTRICAS
+
+	Vamos ver agora como podemos usar a as funcões trigonométricas no C#, ou seja seno , coseno e tangente.
+	
+	Primeiro vamos criar um metodo Seno dentro da classe Calculadora.
+	
+	O metodo Math.Sin exige que passamos um  parametro "a" que representa um angulo, que é medido em radianus, ou seja primeiro precisamos passar para radianus para medir corretamente. Para isso temos que dividir o valor de PI(3,14) por 180, para isso vamos criar uma variavél chamada de radianus passando que o angulo x Math.PI /180.
+	
+		public void Seno(double angulo)
+		{
+			double radiano = angulo * Math.PI / 180;
+			double seno = Math.Sin(radiano);
+			Console.WriteLine($"Seno de {angulo} = {seno}= {Math.Round(seno, 4)}");
+		}
+		
+		public void Coseno(double angulo)
+		{
+			double radiano = angulo * Math.PI / 180;
+			double coseno = Math.Cos(radiano);
+			Console.WriteLine($"Coseno de {angulo} = {coseno}= {Math.Round(coseno, 4)}");
+		}
+		
+		public void Tangente(double angulo)
+		{
+			double radiano = angulo * Math.PI / 180;
+			double tangente = Math.Tan(radiano);
+			Console.WriteLine($"Tangente de {angulo} = {tangente} = {Math.Round(tangente, 4)}");
+		}
+		
+	Na classe Program
+
+		calc.Seno(30);
+		calc.Coseno(30);
+		calc.Tangente(30);
+		
+		
+		O Metodo Round dentro da classe Math serve para arrendondar o valor
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	INCREMENTO E DECREMENTO
+	
+	-- decrementar  = numero - numero - 1
+	++ incrementar  = numero + numero + 1
+
+	int numero = 10;
+	
+	Console.WriteLine(numero);
+	
+	Console.WriteLine("Incrementando o 10");
+	numero ++;   // mesma coisa que numero + numero + 1
+	
+	Console.WriteLine(numero);
+	
+	------------------------------------------------------------------------------------------------------------------
+	
+	CALCULANDO RAIZ QUADRADA
+	
+	Vamos criar um novo metodo e nomea- lo de RaizQuadrada na classe Calculadora
+	
+		public void RaizQuadrada(double x)
+		{
+			double raiz = Math.Sqrt(x);
+			Console.WriteLine($"Raiz quadrada de {x} = {raiz}");
+		}
+		
+	
+	Na classe Program 
+	
+		calc.RaizQuadrada(9);
+		
+	------------------------------------------------------------------------------------------------------------------
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+			
+		

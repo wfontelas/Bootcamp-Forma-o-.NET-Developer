@@ -1,0 +1,15 @@
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\bin\Debug\net6.0\PedroBentoEOMundoDeOz.exe
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\bin\Debug\net6.0\PedroBentoEOMundoDeOz.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\bin\Debug\net6.0\PedroBentoEOMundoDeOz.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\bin\Debug\net6.0\PedroBentoEOMundoDeOz.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\bin\Debug\net6.0\PedroBentoEOMundoDeOz.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\refint\PedroBentoEOMundoDeOz.dll
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.pdb
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\PedroBentoEOMundoDeOz.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\7-Testes Unitários com C#\Desafios Avançandos C#\PedroBentoEOMundoDeOz\obj\Debug\net6.0\ref\PedroBentoEOMundoDeOz.dll

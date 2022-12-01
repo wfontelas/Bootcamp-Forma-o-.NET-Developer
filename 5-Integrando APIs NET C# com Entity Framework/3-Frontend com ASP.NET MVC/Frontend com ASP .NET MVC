@@ -1,0 +1,512 @@
+	-------------------------------------------------------------------------------------------------------------
+	********************************* FRONTEND COM ASP.NET MVC  ************************************************
+	-------------------------------------------------------------------------------------------------------------
+	
+	INTRODUÇÃO
+	
+	O Padrão MVC
+	
+	O Padrão de arquitetura MVC (Model-View-Controller) separ um aplicativo em três grupos de componentes principais:
+	Modelos, Exibições e Componentes. Esse padrão ajuda a obter a separação de interesses.
+	
+	Model - represnta a entidade ( classe)
+	View - exebir dados da Model em uma página 
+	Controller - ligação entre a Model , a lógica e a View
+	
+	Todos se comunicam entre si
+	
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O NOSSO PROJETO MVC
+	
+	Criar uma pasta ProjetoMVC
+	
+	dotnet new mvc
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	ENTENDENDO AS ROTAS
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CONFIGURANDO O ENTITY FRAMEWORKCORE
+	
+	dotnet add package Microsoft.EntityFrameworkCore.Design
+	
+	dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+	
+	Criar a Model Contato na pasta Models
+	
+	public class Contato
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
+        public bool  Ativo { get; set; }
+
+    }
+	
+	Agora vamos criar uma nova pasta Context e criar uma nova classe AgendaContext
+	
+	 public class AgendaContext : DbContext
+    {
+        public AgendaContext(DbContextOptions<AgendaContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<Contato> Contatos { get; set; }
+        
+    }
+	
+	Agora dentro de {}appsettings.Development.json
+	
+	 "ConnectionStrings": {
+    "ConexaoPadrao" : "Server=localhost\\sqlexpress; Initial Catalog=AgendaMVC; Integrated Security=True"
+	}
+	
+	
+	Agora dentro da classe Program.cs
+	
+	using Microsoft.EntityFrameworkCore;
+	using ProjetoMVC.Context;
+	
+	builder.Services.AddDbContext<AgendaContext>(options =>
+		options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
+		
+	---------------------------------------------------------------------------------------------------------------	
+	
+	CRIANDO AS MIGRATIONS
+	
+	dotnet ef migrations add AdicionaTabelaContato
+	
+	dotnet ef database update
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A NOSSA PRIMEIRA PAGINA
+	
+	Dentro da pasta Controller vamos criar uma nova classe ContatoContoller:
+	
+	public class ContatoController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+	
+	Após isso ,vamos criar uma pasta dentro da pasta View e nomealá de Contato e dentro desta pasta vamos criar um arquivo index.cshtml
+	
+	----------------------------------------------------------------------------------------------------------------
+	
+	CONFIGURANDO O MÉTODO  NA CONTROLLER 
+	
+	Dentro da pasta View>Contatos>index.cshtml :
+	
+	@model IEnumerable<ProjetoMVC.Models.Contato>
+
+	@{
+		ViewData["Title"] = "Listagem de Contatos";
+	}
+
+	<h2>Contatos</h2>
+
+	<p>
+		<a asp-action="Criar">Novo Contato</a>
+	</p>
+
+	<table class="table">
+		<thead>
+		   <tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Id)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Nome)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Telefone)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Ativo)
+				</th>
+				<th></th>
+		   </tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(model => item.Id)
+					</td>
+					<td>
+						@Html.DisplayFor(model => item.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(model => item.Telefone)
+					</td>
+					<td>
+						@Html.DisplayFor(model => item.Ativo)
+					</td>
+					<td>
+						<a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+						<a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+						<a asp-action="Deletar" asp-route-id="@item.Id">Deletar</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	
+	
+	
+	NOTA: Varios comandos dentro da view são uma mescla de html e CSharp, sendo assim vários codigos somente funcionam no MVC , e não vai funcionar no HTML , por exemplo @model, @Html , @foreach entre outros.
+	
+	---------------------------------------------------------------------------------------------------------------
+	
+	CONFIGURANDO O METODO NA CONTROLLER
+	
+	Vamos fazer a configuração da nossa controller ContatoController:
+	
+	public class ContatoController : Controller
+    {
+        private readonly AgendaContext _context;
+        public ContatoController(AgendaContext context)
+        {
+            _context = context;
+        }
+        public IActionResult Index()
+        {
+            var contatos = _context.Contatos.ToList();
+            return View(contatos);
+        }
+    }
+	
+	-------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A PÁGINA DE NOVO CONTATO
+	
+	O Processo é o mesmo, vamos criar um novo metodo na ContatoController e uma nova página View>Contato Criar.cshtml
+	
+	dentro da ContatoController:
+	
+		public IActionResult Criar()
+        {
+            return View();
+        }
+		
+	e dentro de Criar.cshtml:
+
+		@model ProjetoMVC.Models.Contato
+
+		@{
+			ViewData["Title"] = "Criar novo contato";
+		}
+
+		<h1>Criar novo contato</h1>
+
+		<hr/>
+
+		<div class="row">
+			<div class="col-md-4">
+				<form asp-action="Criar">
+					<div class="form-group">
+						<label asp-for="Nome" class="control-label"></label>
+						<input asp-for="Nome" class="form-control" />
+					</div>
+					 <div class="form-group">
+						<label asp-for="Telefone" class="control-label"></label>
+						<input asp-for="Telefone" class="form-control" />
+					</div>
+					 <div class="form-group">
+						<label asp-for="Ativo" class="control-label"></label>
+						<input type="checkbox" asp-for="Ativo" class="form-check-input" />
+					</div>
+					<br>
+					<div class="form-group">
+						<input type="submit" value="Criar" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+		</hr>
+		<br>
+		<div>
+			<a asp-action="Index">Voltar</a>
+		</div>
+		
+	----------------------------------------------------------------------------------------------------------------
+
+	IMPLEMENTANDO O METODO CRIAR COMO POST
+	
+	NOTA: No MVC quando um metodo dentro de uma controller não tiver passando um atributo(verboHttp), por padrão ele é HttpGet.
+	
+	OBS: Quando acesso o metodo Criar, na página acessamos o primeiro metodo criar, quando inserimos informação , acessamos o metodo Criar [httppost] que recebe o paramentro contato e  que salvara no banco de dados.
+	
+		[HttpPost]
+        public IActionResult Criar(Contato contato)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Contatos.Add(contato);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(contato);
+        }
+		
+	-----------------------------------------------------------------------------------------------------------	
+	ENTENDENDO O CÓDIGO HTML
+	
+	
+	-----------------------------------------------------------------------------------------------------------
+	
+	CRIANDO A PÁGINA DE EDIÇÃO
+	
+	Vamos começar criando nossa página View>Contatos - Editar.cshtml, vamos copiar e colar a nossa página Criar e fazer algumas alterações:
+	
+	-  @{
+		  ViewData["Title"] = "Editar novo contato";
+	    }	
+	 
+	 
+	 -  <h1>Editar novo contato</h1>
+	 
+	 -  <form asp-action="Editar">
+	 
+	 
+	 -  <input type="submit" value="Editar" class="btn btn-primary" />
+	 
+	 
+	 Agora dentro da Controller ContatoController:
+	 
+	 vamos criar os seguintes metodos:
+	 
+	    public IActionResult Editar(int id)
+        {
+            var contato = _context.Contatos.Find(id);
+
+            if(contato == null)
+                return RedirectToAction(nameof(Index));
+
+            return View(contato);    
+        }
+		
+	-----------------------------------------------------------------------------------------------------------------
+
+	CRIANDO O POST DO EDITAR
+	
+		[HttpPost]
+        public IActionResult Editar(Contato contato)
+        {
+            var contatoBanco = _context.Contatos.Find(contato.Id);
+
+            contatoBanco.Nome = contato.Nome;
+            contatoBanco.Telefone = contato.Telefone;
+            contatoBanco.Ativo = contato.Ativo;
+
+            _context.Contatos.Update(contatoBanco);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+		
+	----------------------------------------------------------------------------------------------------------------
+
+	CRIANDO A PÁGINA DE DETALHES
+
+    A nossa página detalhes tem a obrigação somente de exibir as informações, sem a intenção de editar.
+
+    Vamos criar uma nova página dentro de View>Contato - Detalhes.cshtml:
+
+		@model ProjetoMVC.Models.Contato
+
+		@{
+			ViewData["Title"] = "Detalhes do contato";
+		}
+
+		<h1>Detalhes</h1>
+
+		<div>
+		<dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor( x => x.Nome)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Nome)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor( x => x.Telefone)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Telefone)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor( x => x.Ativo)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Ativo)
+        </dt>
+		</dl>
+		<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+		<a asp-action="Index">Voltar</a>
+		</div>
+		
+		
+	
+	E dentro da Controller ContatoController, vamos criar o metodo detalhes:
+	
+		public IActionResult Detalhes(int id)
+        {
+            var contato = _context.Contatos.Find(id);
+            
+            if(contato == null)
+                return RedirectToAction(nameof(Index));
+
+            return View(contato);    
+        }
+		
+	------------------------------------------------------------------------------------------------------------------
+
+	CRIANDO A PÁGINA DE DELETAR
+	
+	Vamos criar uma nova página dentro de View>Contato - Deletar.cshtml e copiar e colar a página Detalhes e alterar os seguintes campos:
+	
+	- @{
+		  ViewData["Title"] = "Deletar contato";
+	   }
+
+	- <h1 style="color: red;">Deseja realmente deletar esse contato? Essa operação é irreversível</h1>
+	
+	- E vamos deletar essa linha abaixo:
+	<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+	
+	e vamos colocar através de um form:
+	
+	<form asp-action="Deletar">
+		<input type="submit" value="Delete" class="btn btn-danger"/>
+	</form>
+
+	<br>
+	<a asp-action="Index">Voltar</a>	
+	
+	E dentro da Controller ContatoController, vamos criar o metodo Deletar:
+	
+		public IActionResult Deletar(int id)
+        {
+            var contato = _context.Contatos.Find(id);
+            
+            if(contato == null)
+                return RedirectToAction(nameof(Index));
+
+            return View(contato);    
+        }
+	-----------------------------------------------------------------------------------------------------------------
+	
+	CRIANDO O POST DO DELETAR 
+	
+	
+		[HttpPost]
+        public IActionResult Deletar(Contato contato)
+        {
+            var contatoBanco = _context.Contatos.Find(contato.Id);
+
+            _context.Contatos.Remove(contatoBanco);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+	---------------------------------------------------------------------------------------------------------------
+
+	ALTERANDO O MENU
+	
+	Vamos colocar nosso menu em contatos
+	
+	Dentro de View>Shared> - Layout.cshtml    --Layout de todas as suas páginas
+	
+	Dentro da seção chamada header
+	
+	vamos copiar e colar a TAG abaixo e alterar a propriedade asp-controller, asp-action e o nome:
+	  <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
+      </li>
+	  
+	--------------------------------------------------------------------------------------------------------------  
+	  
+	  
+	  
+	  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+
+		
+	
+	
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

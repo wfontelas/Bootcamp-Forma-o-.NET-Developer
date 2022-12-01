@@ -1,0 +1,16 @@
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.exe
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.runtimeconfig.dev.json
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\bin\Debug\net5.0\ElementoMajoritario.pdb
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\refint\ElementoMajoritario.dll
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.pdb
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ElementoMajoritario.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\2-Explorando a linguagem C#\8-Desafios de Código Intermediário C# - Pottencial\ElementoMajoritario\obj\Debug\net5.0\ref\ElementoMajoritario.dll

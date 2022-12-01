@@ -1,0 +1,16 @@
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.exe
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.runtimeconfig.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.runtimeconfig.dev.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\bin\Debug\net5.0\Desafio3.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\refint\Desafio3.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\Desafio3.genruntimeconfig.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\11-Desafios Básicos de C# - Formação .NET\Desafio3\obj\Debug\net5.0\ref\Desafio3.dll

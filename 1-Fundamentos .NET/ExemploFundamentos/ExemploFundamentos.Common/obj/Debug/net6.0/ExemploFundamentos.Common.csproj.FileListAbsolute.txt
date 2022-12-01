@@ -1,0 +1,12 @@
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\bin\Debug\net6.0\ExemploFundamentos.Common.deps.json
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\bin\Debug\net6.0\ExemploFundamentos.Common.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\bin\Debug\net6.0\ExemploFundamentos.Common.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.csproj.AssemblyReference.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.AssemblyInfoInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.AssemblyInfo.cs
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.csproj.CoreCompileInputs.cache
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\refint\ExemploFundamentos.Common.dll
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ExemploFundamentos.Common.pdb
+C:\workspace\Bootcamp Formação .NET Developer\Fundamentos .NET\ExemploFundamentos\ExemploFundamentos.Common\obj\Debug\net6.0\ref\ExemploFundamentos.Common.dll

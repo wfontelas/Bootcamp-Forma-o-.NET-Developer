@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net6.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c5aa4838-d28e-423d-84ff-27735612d27a/AppServices/subscriptions/c5aa4838-d28e-423d-84ff-27735612d27a/resourceGroups/desafio/providers/Microsoft.Web/sites/desafioazurewfontelas"
+}

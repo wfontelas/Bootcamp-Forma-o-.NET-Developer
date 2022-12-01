@@ -1,0 +1,16 @@
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.exe
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.deps.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.runtimeconfig.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.runtimeconfig.dev.json
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\bin\Debug\net5.0\AumentoDeSalario.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.AssemblyInfoInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.AssemblyInfo.cs
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.csproj.CoreCompileInputs.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\refint\AumentoDeSalario.dll
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.pdb
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\AumentoDeSalario.genruntimeconfig.cache
+C:\Users\William\Desktop\William\CSharp\projetos\desafios intermediarios\AumentoDeSalario\obj\Debug\net5.0\ref\AumentoDeSalario.dll
